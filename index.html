@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abby Rose Studio — Original Australian Botanical Paintings</title>
+<meta name="description" content="Hand-painted original acrylic botanical paintings by Abby Rose, inspired by Australian native flora. Based on the Redcliffe Peninsula, Queensland.">
+<link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<!--
+  ANALYTICS — GoatCounter: free, no cookies, simple dashboard.
+  1. goatcounter.com -> Sign up (free) -> pick a site code, e.g. "abbyrosestudio"
+  2. Replace YOURCODE below (one place only)
+  3. View your dashboard anytime at https://YOURCODE.goatcounter.com
+-->
+<script data-goatcounter="https://YOURCODE.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<style>
+  :root{
+    --ink:#2b2620;
+    --muted:#6f6a62;
+    --paper:#faf6ee;
+    --paper-deep:#f2ebda;
+    --accent:#77715f;        /* neutral stone-olive (was teal) */
+    --accent-deep:#4e493c;
+    --sage:#8a9a7e;
+    --sage-pale:#e6e8dc;
+    --line:#dbd3c1;
+    --radius:2px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
+  }
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Work Sans', sans-serif; font-weight:400; line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{ font-family:'Fraunces', serif; font-weight:500; margin:0; letter-spacing:-0.01em; }
+  a{color:inherit;}
+  img{max-width:100%; display:block;}
+  .wrap{max-width:1180px; margin:0 auto; padding:0 24px;}
+  a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible{
+    outline:2px solid var(--accent); outline-offset:3px;
+  }
+
+  /* image protection (deterrent) */
+  img{ -webkit-user-select:none; user-select:none; -webkit-user-drag:none; }
+  .protected{ position:relative; }
+  .protected::after{ content:""; position:absolute; inset:0; }
+
+  /* ---------- NAV ---------- */
+  header.site-nav{
+    position:fixed; top:0; left:0; right:0; z-index:50;
+    background:rgba(250,246,238,0.9);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid transparent;
+    transition:border-color .3s ease;
+  }
+  header.site-nav.scrolled{ border-color:var(--line); }
+  .nav-inner{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:10px 24px; max-width:1180px; margin:0 auto;
+  }
+  .nav-logo{ height:56px; width:auto; color:var(--ink); }
+  .nav-logo svg, .nav-logo img{ height:100%; width:auto; }
+  nav.links{ display:flex; gap:30px; }
+  nav.links a{
+    text-decoration:none; font-size:13.5px; letter-spacing:0.06em;
+    text-transform:uppercase; color:var(--ink); opacity:0.75; transition:opacity .2s ease;
+  }
+  nav.links a:hover{ opacity:1; }
+  .nav-toggle{ display:none; background:none; border:none; cursor:pointer; padding:6px; }
+  .nav-toggle span{ display:block; width:22px; height:2px; background:var(--ink); margin:5px 0; }
+  @media (max-width:760px){
+    nav.links{
+      position:absolute; top:100%; left:0; right:0;
+      flex-direction:column; background:var(--paper);
+      padding:18px 24px 26px; gap:16px;
+      border-bottom:1px solid var(--line); display:none;
+    }
+    nav.links.open{ display:flex; }
+    .nav-toggle{ display:block; }
+  }
+
+  /* ---------- HERO (split on desktop, full-bleed on mobile) ---------- */
+  .hero{
+    display:grid; grid-template-columns:1fr 1fr;
+    min-height:100vh; align-items:stretch;
+  }
+  .hero-photo{ position:relative; overflow:hidden; background:var(--paper-deep); }
+  .hero-photo img{
+    position:absolute; inset:0; width:100%; height:100%;
+    object-fit:cover; object-position:50% 30%;
+  }
+  .hero-text{
+    display:flex; flex-direction:column; justify-content:center;
+    padding:120px 56px 72px;
+  }
+  .hero-eyebrow{
+    font-size:12.5px; letter-spacing:0.16em; text-transform:uppercase;
+    color:var(--accent); font-weight:600; margin-bottom:20px;
+  }
+  .hero h1{
+    font-size:clamp(2.5rem, 4.6vw, 4.2rem);
+    font-weight:400; font-style:italic; line-height:1.06; max-width:12ch;
+  }
+  .hero-sub{ margin-top:24px; max-width:40ch; font-size:16.5px; color:var(--muted); }
+  .hero-ctas{ margin-top:36px; display:flex; gap:14px; flex-wrap:wrap; }
+  @media (max-width:860px){
+    .hero{ grid-template-columns:1fr; min-height:auto; }
+    .hero-photo{ height:72vh; min-height:420px; }
+    .hero-photo img{ object-position:50% 25%; }
+    .hero-text{ padding:48px 24px 56px; }
+  }
+
+  .btn{
+    display:inline-block; background:var(--accent-deep); color:var(--paper);
+    padding:14px 26px; font-size:13px; letter-spacing:0.07em; text-transform:uppercase;
+    font-weight:500; text-decoration:none; border:none; cursor:pointer;
+    border-radius:var(--radius); transition:background .2s ease;
+  }
+  .btn:hover{ background:var(--ink); }
+  .btn.ghost{
+    background:transparent; color:var(--ink);
+    box-shadow:inset 0 0 0 1px var(--ink);
+  }
+  .btn.ghost:hover{ background:var(--ink); color:var(--paper); }
+
+  /* ---------- STIPPLE DIVIDER ---------- */
+  .stipple-divider{
+    height:64px; width:100%;
+    background-repeat:repeat-x; background-size:120px 64px;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='64' viewBox='0 0 120 64'><g fill='none' stroke='%2377715f' stroke-width='2.6' stroke-linecap='round' opacity='0.5'><ellipse cx='14' cy='18' rx='2.6' ry='4'/><ellipse cx='30' cy='30' rx='2.6' ry='4.2'/><ellipse cx='47' cy='14' rx='2.4' ry='3.8'/><ellipse cx='63' cy='38' rx='2.6' ry='4'/><ellipse cx='80' cy='22' rx='2.4' ry='3.8'/><ellipse cx='97' cy='34' rx='2.6' ry='4.2'/><ellipse cx='112' cy='16' rx='2.4' ry='3.8'/></g></svg>");
+  }
+
+  section{ padding:96px 0; }
+  .section-head{ margin-bottom:52px; max-width:640px; }
+  .eyebrow{
+    font-size:12.5px; letter-spacing:0.16em; text-transform:uppercase;
+    color:var(--accent); font-weight:600; margin-bottom:14px; display:block;
+  }
+  .section-head h2{ font-size:clamp(1.9rem, 3.4vw, 2.7rem); }
+  .section-head p{ color:var(--muted); margin-top:16px; font-size:16px; max-width:52ch; }
+
+  /* ---------- STATEMENT STRIP ---------- */
+  .philosophy{
+    background:var(--accent-deep); color:var(--paper);
+    padding:76px 0; text-align:center;
+  }
+  .philosophy p{
+    font-family:'Fraunces', serif; font-style:italic; font-weight:400;
+    font-size:clamp(1.3rem, 2.9vw, 1.95rem); line-height:1.5;
+    max-width:850px; margin:0 auto; color:#f3efe4;
+  }
+
+  /* ---------- GALLERY ---------- */
+  .gallery-grid{ display:grid; grid-template-columns:repeat(2, 1fr); gap:48px 32px; }
+  @media (max-width:760px){ .gallery-grid{ grid-template-columns:1fr; gap:40px; } }
+  .painting-card{ display:block; text-decoration:none; color:inherit; cursor:pointer; border:none; background:none; padding:0; text-align:left; font:inherit; width:100%; }
+  .painting-frame{
+    position:relative; overflow:hidden; background:var(--paper-deep); aspect-ratio:4/3;
+  }
+  .painting-frame img{
+    width:100%; height:100%; object-fit:cover;
+    transition:transform .6s cubic-bezier(.2,.7,.3,1);
+  }
+  .painting-card:hover .painting-frame img{ transform:scale(1.03); }
+  .status-tag{
+    position:absolute; top:14px; left:14px; z-index:2;
+    background:rgba(250,246,238,0.94); color:var(--accent-deep);
+    font-size:11px; letter-spacing:0.09em; text-transform:uppercase;
+    padding:6px 11px; font-weight:600;
+  }
+  .status-tag.available{ background:var(--accent-deep); color:var(--paper); }
+  .painting-meta{ padding-top:18px; display:flex; justify-content:space-between; align-items:baseline; gap:12px; }
+  .painting-meta h3{ font-size:1.3rem; font-weight:500; }
+  .painting-meta .dims{ color:var(--muted); font-size:13.5px; margin-top:5px; }
+  .painting-price{ font-size:14.5px; font-weight:500; color:var(--accent-deep); white-space:nowrap; }
+  .painting-desc{ color:var(--muted); font-size:14.5px; margin-top:10px; max-width:58ch; }
+  .painting-feeling{
+    font-family:'Fraunces', serif; font-style:italic; color:var(--accent);
+    font-size:15px; margin-top:8px;
+  }
+  .painting-swatches{ display:flex; gap:6px; margin-top:14px; }
+  .painting-swatches span{
+    width:16px; height:16px; border-radius:50%; display:block;
+    border:1px solid rgba(0,0,0,0.1);
+  }
+  .view-hint{
+    font-size:12px; letter-spacing:0.08em; text-transform:uppercase;
+    color:var(--accent); margin-top:12px; font-weight:600; opacity:0; transition:opacity .25s ease;
+  }
+  .painting-card:hover .view-hint{ opacity:1; }
+
+  /* ---------- SPOTLIGHT (available piece) ---------- */
+  .spotlight{
+    display:grid; grid-template-columns:1.05fr 0.95fr; gap:56px; align-items:center;
+  }
+  @media (max-width:860px){ .spotlight{ grid-template-columns:1fr; gap:36px; } }
+  .spotlight-img{ position:relative; }
+  .spotlight-img img{ width:100%; }
+  .spotlight-body .desc{ color:var(--muted); margin-top:18px; max-width:52ch; }
+  .spotlight-facts{
+    margin-top:26px; display:grid; gap:10px; font-size:14.5px; color:var(--ink);
+  }
+  .spotlight-facts b{ font-weight:600; }
+  .spotlight-price{
+    font-family:'Fraunces', serif; font-size:1.9rem; margin-top:26px; color:var(--accent-deep);
+  }
+  .spotlight .btn{ margin-top:28px; }
+
+  /* ---------- UPCOMING ---------- */
+  .upcoming{ background:var(--paper-deep); }
+  .upcoming-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:32px; }
+  @media (max-width:760px){ .upcoming-grid{ grid-template-columns:1fr; } }
+  .upcoming-card{
+    background:var(--paper); padding:34px 32px; border:1px solid var(--line);
+  }
+  .upcoming-card h3{ font-size:1.35rem; margin-top:8px; }
+  .upcoming-card p{ color:var(--muted); font-size:14.5px; margin-top:12px; }
+  .upcoming-card .swatches{ display:flex; gap:6px; margin-top:18px; }
+  .upcoming-card .swatches span{
+    width:16px; height:16px; border-radius:50%; border:1px solid rgba(0,0,0,0.1);
+  }
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{ display:grid; grid-template-columns:0.9fr 1.1fr; gap:64px; align-items:center; }
+  @media (max-width:860px){ .about-grid{ grid-template-columns:1fr; gap:36px; } }
+  .about-photo{ position:relative; overflow:hidden; aspect-ratio:4/5; }
+  .about-photo img{
+    width:100%; height:100%; object-fit:cover;
+    object-position:50% 32%; transform:scale(1.12);  /* slight crop-in as requested */
+  }
+  .about-body p{ color:var(--muted); margin-top:16px; max-width:56ch; }
+
+  /* ---------- EARLY ACCESS ---------- */
+  .early{ background:var(--accent-deep); color:var(--paper); text-align:center; }
+  .early .eyebrow{ color:#cfc8ae; }
+  .early h2{ color:var(--paper); font-size:clamp(1.8rem,3.2vw,2.5rem); }
+  .early p{ color:rgba(250,246,238,0.75); max-width:46ch; margin:16px auto 0; }
+  .early form{
+    margin-top:32px; display:flex; gap:10px; justify-content:center; flex-wrap:wrap;
+  }
+  .early input[type=email]{
+    padding:14px 16px; font-size:15px; font-family:'Work Sans',sans-serif;
+    border:1px solid rgba(250,246,238,0.35); background:rgba(250,246,238,0.08);
+    color:var(--paper); border-radius:var(--radius); width:min(320px, 80vw);
+  }
+  .early input::placeholder{ color:rgba(250,246,238,0.5); }
+  .early .btn{ background:var(--paper); color:var(--accent-deep); }
+  .early .btn:hover{ background:#fff; }
+  .early .note{ font-size:12.5px; margin-top:14px; color:rgba(250,246,238,0.55); }
+
+  /* ---------- CONTACT ---------- */
+  .contact-wrap{ display:grid; grid-template-columns:1fr 1fr; gap:64px; }
+  @media (max-width:860px){ .contact-wrap{ grid-template-columns:1fr; gap:40px; } }
+  .contact-info p{ color:var(--muted); margin-top:16px; max-width:44ch; }
+  .contact-links{ margin-top:28px; display:grid; gap:12px; }
+  .contact-links a{
+    text-decoration:none; font-size:15px; color:var(--ink);
+    border-bottom:1px solid var(--line); padding-bottom:12px; transition:color .2s ease;
+  }
+  .contact-links a:hover{ color:var(--accent-deep); }
+  .field{ margin-bottom:18px; }
+  .field label{
+    display:block; font-size:12.5px; letter-spacing:0.08em; text-transform:uppercase;
+    font-weight:600; color:var(--accent-deep); margin-bottom:8px;
+  }
+  .field input, .field textarea{
+    width:100%; padding:13px 14px; font-size:15px; font-family:'Work Sans',sans-serif;
+    border:1px solid var(--line); background:#fff; color:var(--ink);
+    border-radius:var(--radius);
+  }
+  .field input:focus, .field textarea:focus{ border-color:var(--accent); outline:none; }
+  .field textarea{ min-height:140px; resize:vertical; }
+
+  /* ---------- FOOTER ---------- */
+  footer{ border-top:1px solid var(--line); padding:48px 0 36px; }
+  .footer-inner{ display:flex; justify-content:space-between; align-items:center; gap:20px; flex-wrap:wrap; }
+  .logo-mark{ height:64px; width:auto; color:var(--ink); }
+  .foot-links{ display:flex; gap:26px; flex-wrap:wrap; }
+  .foot-links a{
+    text-decoration:none; font-size:13px; letter-spacing:0.06em;
+    text-transform:uppercase; opacity:0.7;
+  }
+  .foot-links a:hover{ opacity:1; }
+  .foot-bottom{
+    margin-top:30px; display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap;
+    font-size:12.5px; color:var(--muted);
+  }
+
+  /* ---------- LIGHTBOX (swipeable detail viewer) ---------- */
+  .lightbox{
+    position:fixed; inset:0; z-index:100; display:none;
+    background:rgba(24,21,16,0.94); color:var(--paper);
+    flex-direction:column;
+  }
+  .lightbox.open{ display:flex; }
+  .lb-top{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:16px 20px;
+  }
+  .lb-title{ font-family:'Fraunces',serif; font-style:italic; font-size:1.15rem; }
+  .lb-close{
+    background:none; border:none; color:var(--paper); font-size:26px;
+    cursor:pointer; padding:6px 10px; line-height:1;
+  }
+  .lb-stage{
+    flex:1; display:flex; align-items:center; justify-content:center;
+    position:relative; overflow:hidden; touch-action:pan-y;
+  }
+  .lb-stage img{
+    max-width:92vw; max-height:74vh; object-fit:contain;
+    user-select:none; -webkit-user-drag:none;
+  }
+  .lb-arrow{
+    position:absolute; top:50%; transform:translateY(-50%);
+    background:rgba(250,246,238,0.12); border:none; color:var(--paper);
+    font-size:22px; width:44px; height:44px; border-radius:50%;
+    cursor:pointer; transition:background .2s ease;
+  }
+  .lb-arrow:hover{ background:rgba(250,246,238,0.25); }
+  .lb-prev{ left:14px; } .lb-next{ right:14px; }
+  .lb-dots{ display:flex; gap:8px; justify-content:center; padding:16px 0 8px; }
+  .lb-dots span{
+    width:8px; height:8px; border-radius:50%; background:rgba(250,246,238,0.3);
+    transition:background .2s ease;
+  }
+  .lb-dots span.on{ background:var(--paper); }
+  .lb-caption{ text-align:center; font-size:13px; color:rgba(250,246,238,0.65); padding-bottom:18px; }
+  @media (max-width:760px){
+    .lb-arrow{ display:none; } /* swipe on touch */
+  }
+</style>
+</head>
+<body>
+
+<header class="site-nav" id="siteNav">
+  <div class="nav-inner">
+    <a href="#" aria-label="Abby Rose Studio home" class="nav-logo protected">
+      <img src="assets/logo.svg" alt="Abby Rose Studio">
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="links" id="navLinks">
+      <a href="#gallery">Collection</a>
+      <a href="#available">Available</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <a href="https://instagram.com/abbyrose_studio" target="_blank" rel="noopener" data-txt="instagramHandle">Instagram</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" style="padding:0;">
+  <div class="hero-photo protected">
+    <img src="assets/hero-abby.jpg" alt="Abby holding her painting Twilight Bloom" id="heroImg">
+  </div>
+  <div class="hero-text">
+    <span class="hero-eyebrow" data-txt="heroEyebrow">Original Australian botanical paintings</span>
+    <h1 data-txt="heroHeading">Painted to hold a feeling</h1>
+    <p class="hero-sub" data-txt="heroSub">Hand-painted originals inspired by Australian native flora, made one canvas at a time on the Redcliffe Peninsula.</p>
+    <div class="hero-ctas">
+      <a href="#available" class="btn" data-goatcounter-click="hero:view-available">View available work</a>
+      <a href="#gallery" class="btn ghost" data-goatcounter-click="hero:view-collection">The collection</a>
+    </div>
+  </div>
+</section>
+
+<div class="stipple-divider"></div>
+
+<section class="philosophy" style="padding:76px 0;">
+  <div class="wrap">
+    <p data-txt="statement">Inspired by Australia's native flora, I paint atmospheric botanical artworks using layered colour and translucent depth. Each original is created to capture a feeling rather than a perfect representation of nature.</p>
+  </div>
+</section>
+
+<section id="available">
+  <div class="wrap">
+    <div id="spotlightWrap"></div>
+  </div>
+</section>
+
+<section id="gallery" style="padding-top:0;">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow" data-txt="galleryEyebrow">The Collection</span>
+      <h2 data-txt="galleryHeading">Original works</h2>
+      <p data-txt="galleryIntro">Each painting is a one-off original. Tap any piece to see it up close.</p>
+    </div>
+    <div class="gallery-grid" id="galleryGrid"></div>
+  </div>
+</section>
+
+<section class="upcoming">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow" data-txt="upcomingEyebrow">In the Studio</span>
+      <h2 data-txt="upcomingHeading">Coming next</h2>
+      <p data-txt="upcomingIntro">Pieces currently on the easel. Join the early access list to see them before they're listed.</p>
+    </div>
+    <div class="upcoming-grid" id="upcomingGrid"></div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="about-photo protected">
+        <img src="assets/profile.jpg" alt="Abby, the artist behind Abby Rose Studio">
+      </div>
+      <div class="about-body">
+        <span class="eyebrow" data-txt="aboutEyebrow">About</span>
+        <h2 data-txt="aboutHeading">Hi, I'm Abby</h2>
+        <p data-txt="aboutBody">I'm a graphic designer by trade and a painter by instinct, working from the Redcliffe Peninsula in Queensland. Every background is built up in layers rather than painted flat — a dark base, a mid glaze, then a light pass over the top — which is what gives each piece its depth. The botanicals go on afterwards: fine white contour lines, stippled texture, and native flora drawn from the real plant.</p>
+        <p data-txt="aboutBody2">Every original comes with a signed Certificate of Authenticity. All copyrights and reproductions are reserved for the artist.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="early">
+  <div class="wrap">
+    <span class="eyebrow" data-txt="earlyAccessEyebrow">Early Access</span>
+    <h2 data-txt="earlyAccessHeading">See new work first</h2>
+    <p data-txt="earlyAccessBody">New paintings go to this list before they're listed anywhere else, with first pick before a piece goes public.</p>
+    <!-- Buttondown: replace YOUR-USERNAME (two places) once you create your free account -->
+    <form action="https://buttondown.email/api/emails/embed-subscribe/YOUR-USERNAME" method="post" target="popupwindow"
+      onsubmit="window.open('https://buttondown.email/YOUR-USERNAME','popupwindow')"
+      data-goatcounter-click="early-access:subscribe">
+      <input type="email" name="email" placeholder="you@example.com" required aria-label="Email address">
+      <button type="submit" class="btn" data-txt="earlyAccessButton">Join the list</button>
+    </form>
+    <p class="note" data-txt="earlyAccessNote">No spam. Just new work and the occasional studio note.</p>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="contact-wrap">
+      <div class="contact-info">
+        <span class="eyebrow" data-txt="contactEyebrow">Get in Touch</span>
+        <h2 data-txt="contactHeading">Let's talk about a piece</h2>
+        <p data-txt="contactBody">Whether you're asking about an available painting, thinking about a commission, or just want to see what's coming next — I'd love to hear from you.</p>
+        <div class="contact-links">
+          <a href="https://instagram.com/abbyrose_studio" target="_blank" rel="noopener" id="igLink">Instagram — @abbyrose_studio</a>
+          <a href="#" id="emailLink">awest125@gmail.com</a>
+          <a href="#" style="pointer-events:none" id="deliveryNote">Redcliffe Peninsula, QLD — local delivery available</a>
+        </div>
+      </div>
+      <!-- Formspree: replace YOUR_FORM_ID once you create your free form.
+           Emails arrive at whatever address your Formspree account uses —
+           to redirect later, just change the email in Formspree settings, not here. -->
+      <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <div class="field">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required autocomplete="name">
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required autocomplete="email">
+        </div>
+        <div class="field">
+          <label for="piece">Which piece? (optional)</label>
+          <input type="text" id="piece" name="piece" placeholder="e.g. Twilight Bloom">
+        </div>
+        <div class="field">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" required></textarea>
+        </div>
+        <button type="submit" class="btn" data-goatcounter-click="contact:send">Send message</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-inner">
+      <img src="assets/logo.svg" alt="Abby Rose Studio" class="logo-mark protected">
+      <div class="foot-links">
+        <a href="#gallery">Collection</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        <a href="https://instagram.com/abbyrose_studio" target="_blank" rel="noopener">Instagram</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>&copy; <span id="year"></span> Abby Rose Studio. <span data-txt="footerNote">All artworks, images and reproductions are the property of the artist.</span></span>
+      <span data-txt="location">Redcliffe Peninsula, Queensland</span>
+    </div>
+  </div>
+</footer>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Painting detail viewer">
+  <div class="lb-top">
+    <span class="lb-title" id="lbTitle"></span>
+    <button class="lb-close" id="lbClose" aria-label="Close">&times;</button>
+  </div>
+  <div class="lb-stage protected" id="lbStage">
+    <button class="lb-arrow lb-prev" id="lbPrev" aria-label="Previous photo">&#8249;</button>
+    <img src="" alt="" id="lbImg">
+    <button class="lb-arrow lb-next" id="lbNext" aria-label="Next photo">&#8250;</button>
+  </div>
+  <div class="lb-dots" id="lbDots"></div>
+  <div class="lb-caption">Swipe or use arrows to see close-up details</div>
+</div>
+
+<script>
+  // ---------- image protection (deterrent, not absolute) ----------
+  document.addEventListener('contextmenu', e => {
+    if (e.target.tagName === 'IMG') e.preventDefault();
+  });
+  document.addEventListener('dragstart', e => {
+    if (e.target.tagName === 'IMG') e.preventDefault();
+  });
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const nav = document.getElementById('siteNav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 20));
+  const toggle = document.getElementById('navToggle');
+  const links = document.getElementById('navLinks');
+  toggle.addEventListener('click', () => {
+    const open = links.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open);
+  });
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    links.classList.remove('open');
+    toggle.setAttribute('aria-expanded','false');
+  }));
+
+  // ---------- GoatCounter click events ----------
+  document.addEventListener('click', (e) => {
+    const el = e.target.closest('[data-goatcounter-click]');
+    if (el && window.goatcounter && window.goatcounter.count) {
+      window.goatcounter.count({
+        path: el.getAttribute('data-goatcounter-click'),
+        title: el.getAttribute('data-goatcounter-click'),
+        event: true
+      });
+    }
+  });
+
+  // ---------- editable site text from data/content.json ----------
+  fetch('data/content.json')
+    .then(r => r.json())
+    .then(c => {
+      document.querySelectorAll('[data-txt]').forEach(el => {
+        const key = el.getAttribute('data-txt');
+        if (c[key]) el.textContent = c[key];
+      });
+      const ig = document.getElementById('igLink');
+      if (c.instagramUrl){ ig.href = c.instagramUrl; }
+      if (c.instagramHandle){ ig.textContent = 'Instagram — ' + c.instagramHandle; }
+      const em = document.getElementById('emailLink');
+      if (c.contactEmail){ em.href = 'mailto:' + c.contactEmail; em.textContent = c.contactEmail; }
+      if (c.contactDeliveryNote){ document.getElementById('deliveryNote').textContent = c.location + ' — ' + c.contactDeliveryNote; }
+    })
+    .catch(()=>{ /* fall back to text baked into the HTML */ });
+
+  // ---------- paintings ----------
+  let LB = { photos:[], idx:0 };
+  const lightbox = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lbImg');
+  const lbTitle = document.getElementById('lbTitle');
+  const lbDots = document.getElementById('lbDots');
+
+  function openLightbox(title, photos, start=0){
+    LB.photos = photos; LB.idx = start;
+    lbTitle.textContent = title;
+    lbDots.innerHTML = photos.map((_,i)=>`<span${i===start?' class="on"':''}></span>`).join('');
+    showLB(start);
+    lightbox.classList.add('open');
+    document.body.style.overflow='hidden';
+    if (window.goatcounter && window.goatcounter.count){
+      window.goatcounter.count({ path:'lightbox:'+title, title:'lightbox:'+title, event:true });
+    }
+  }
+  function showLB(i){
+    LB.idx = (i + LB.photos.length) % LB.photos.length;
+    lbImg.src = 'assets/' + LB.photos[LB.idx];
+    lbDots.querySelectorAll('span').forEach((d,j)=>d.classList.toggle('on', j===LB.idx));
+  }
+  function closeLB(){
+    lightbox.classList.remove('open');
+    document.body.style.overflow='';
+    lbImg.src='';
+  }
+  document.getElementById('lbClose').addEventListener('click', closeLB);
+  document.getElementById('lbPrev').addEventListener('click', ()=>showLB(LB.idx-1));
+  document.getElementById('lbNext').addEventListener('click', ()=>showLB(LB.idx+1));
+  lightbox.addEventListener('click', e=>{ if(e.target===lightbox) closeLB(); });
+  document.addEventListener('keydown', e=>{
+    if(!lightbox.classList.contains('open')) return;
+    if(e.key==='Escape') closeLB();
+    if(e.key==='ArrowLeft') showLB(LB.idx-1);
+    if(e.key==='ArrowRight') showLB(LB.idx+1);
+  });
+  // touch swipe
+  let touchX=null;
+  document.getElementById('lbStage').addEventListener('touchstart', e=>{ touchX=e.touches[0].clientX; },{passive:true});
+  document.getElementById('lbStage').addEventListener('touchend', e=>{
+    if(touchX===null) return;
+    const dx = e.changedTouches[0].clientX - touchX;
+    if(Math.abs(dx)>48){ dx>0 ? showLB(LB.idx-1) : showLB(LB.idx+1); }
+    touchX=null;
+  },{passive:true});
+
+  fetch('data/paintings.json')
+    .then(res => res.json())
+    .then(data => {
+      const paintings = data.paintings || data;
+      const grid = document.getElementById('galleryGrid');
+      const spotlightWrap = document.getElementById('spotlightWrap');
+      const upcomingGrid = document.getElementById('upcomingGrid');
+      let spotlightDone = false;
+
+      paintings.filter(p => p.status !== 'coming-soon').forEach(p => {
+        const isAvailable = p.status === 'available';
+        const tagLabel = isAvailable ? 'Available now' : 'Collected';
+        const tagClass = isAvailable ? 'status-tag available' : 'status-tag';
+        const allPhotos = [p.image, ...(p.detailImages||[])].filter(Boolean);
+        const swatchesHtml = (p.palette||[]).length
+          ? `<div class="painting-swatches">${p.palette.map(c=>`<span style="background:${c}"></span>`).join('')}</div>` : '';
+
+        const card = document.createElement('button');
+        card.className = 'painting-card';
+        card.setAttribute('data-goatcounter-click', `gallery-card:${p.title}`);
+        card.innerHTML = `
+          <div class="painting-frame protected">
+            <img src="assets/${p.image}" alt="${p.title} — original botanical painting" loading="lazy">
+            <span class="${tagClass}">${tagLabel}</span>
+          </div>
+          <div class="painting-meta">
+            <div>
+              <h3>${p.title}</h3>
+              <div class="dims">${[p.size, p.medium].filter(Boolean).join(' · ')}</div>
+            </div>
+            ${p.price ? `<div class="painting-price">${p.price}</div>` : ''}
+          </div>
+          ${p.description ? `<p class="painting-desc">${p.description}</p>` : ''}
+          ${p.feeling ? `<p class="painting-feeling">${p.feeling}</p>` : ''}
+          ${swatchesHtml}
+          <span class="view-hint">View up close &rarr;</span>
+        `;
+        card.addEventListener('click', ()=>openLightbox(p.title, allPhotos));
+        grid.appendChild(card);
+
+        if (isAvailable && !spotlightDone) {
+          spotlightDone = true;
+          const facts = [];
+          if (p.size) facts.push(`<div><b>Size</b> — ${p.size}</div>`);
+          if (p.medium) facts.push(`<div><b>Medium</b> — ${p.medium}</div>`);
+          if (p.frame) facts.push(`<div><b>Frame</b> — ${p.frame}</div>`);
+          if (p.finish) facts.push(`<div><b>Finish</b> — ${p.finish}</div>`);
+          if (p.delivery) facts.push(`<div><b>Delivery</b> — ${p.delivery}</div>`);
+          const spotSw = (p.palette||[]).length
+            ? `<div class="painting-swatches" style="margin-top:22px;">${p.palette.map(c=>`<span style="background:${c}"></span>`).join('')}</div>` : '';
+          spotlightWrap.innerHTML = `
+            <div class="spotlight">
+              <div class="spotlight-img protected" role="button" tabindex="0" aria-label="View ${p.title} up close" style="cursor:pointer;">
+                <img src="assets/${p.image}" alt="${p.title}, full view">
+              </div>
+              <div class="spotlight-body">
+                <span class="eyebrow">Available Now</span>
+                <h3 style="font-size:clamp(1.8rem,3vw,2.5rem);">${p.title}</h3>
+                ${p.description ? `<p class="desc">${p.description}</p>` : ''}
+                ${p.feeling ? `<p class="painting-feeling">${p.feeling}</p>` : ''}
+                <div class="spotlight-facts">${facts.join('')}</div>
+                ${p.price ? `<div class="spotlight-price">${p.price}</div>` : ''}
+                ${spotSw}
+                <a href="#contact" class="btn" data-goatcounter-click="enquire:${p.title}">Enquire about this piece</a>
+              </div>
+            </div>`;
+          const si = spotlightWrap.querySelector('.spotlight-img');
+          si.addEventListener('click', ()=>openLightbox(p.title, allPhotos));
+          si.addEventListener('keydown', e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); openLightbox(p.title, allPhotos);} });
+        }
+      });
+
+      if (!spotlightDone) document.getElementById('available').style.display='none';
+
+      const upcoming = paintings.filter(p => p.status === 'coming-soon');
+      if (upcoming.length) {
+        upcomingGrid.innerHTML = upcoming.map(p => `
+          <div class="upcoming-card">
+            ${p.size ? `<span class="eyebrow">${p.size}</span>` : ''}
+            <h3>${p.title}</h3>
+            ${p.description ? `<p>${p.description}</p>` : ''}
+            ${(p.palette||[]).length ? `<div class="swatches">${p.palette.map(c=>`<span style="background:${c}"></span>`).join('')}</div>` : ''}
+          </div>`).join('');
+      } else {
+        upcomingGrid.closest('section').style.display = 'none';
+      }
+    })
+    .catch(err => {
+      console.error('Could not load paintings.json', err);
+      document.getElementById('galleryGrid').innerHTML = '<p style="color:var(--muted)">Could not load the collection right now.</p>';
+    });
+</script>
+
+</body>
+</html>

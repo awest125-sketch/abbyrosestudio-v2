@@ -1,0 +1,43 @@
+{
+  "_readme": "Everything you can see as words on the website lives in this file. Change the text between the quote marks, save, and the site updates. Don't remove the quote marks or the commas.",
+
+  "siteTitle": "Abby Rose Studio",
+  "instagramUrl": "https://instagram.com/abbyrose_studio",
+  "instagramHandle": "@abbyrose_studio",
+  "contactEmail": "awest125@gmail.com",
+  "location": "Redcliffe Peninsula, Queensland",
+
+  "heroEyebrow": "Original Australian botanical paintings",
+  "heroHeading": "Painted to hold a feeling",
+  "heroSub": "Hand-painted originals inspired by Australian native flora, made one canvas at a time on the Redcliffe Peninsula.",
+
+  "statement": "Inspired by Australia's native flora, I paint atmospheric botanical artworks using layered colour and translucent depth. Each original is created to capture a feeling rather than a perfect representation of nature.",
+
+  "galleryEyebrow": "The Collection",
+  "galleryHeading": "Original works",
+  "galleryIntro": "Each painting is a one-off original. Tap any piece to see it up close.",
+
+  "availableEyebrow": "Available Now",
+
+  "upcomingEyebrow": "In the Studio",
+  "upcomingHeading": "Coming next",
+  "upcomingIntro": "Pieces currently on the easel. Join the early access list to see them before they're listed.",
+
+  "aboutEyebrow": "About",
+  "aboutHeading": "Hi, I'm Abby",
+  "aboutBody": "I'm a graphic designer by trade and a painter by instinct, working from the Redcliffe Peninsula in Queensland. Every background is built up in layers rather than painted flat — a dark base, a mid glaze, then a light pass over the top — which is what gives each piece its depth. The botanicals go on afterwards: fine white contour lines, stippled texture, and native flora drawn from the real plant.",
+  "aboutBody2": "Every original comes with a signed Certificate of Authenticity. All copyrights and reproductions are reserved for the artist.",
+
+  "earlyAccessEyebrow": "Early Access",
+  "earlyAccessHeading": "See new work first",
+  "earlyAccessBody": "New paintings go to this list before they're listed anywhere else, with first pick before a piece goes public.",
+  "earlyAccessButton": "Join the list",
+  "earlyAccessNote": "No spam. Just new work and the occasional studio note.",
+
+  "contactEyebrow": "Get in Touch",
+  "contactHeading": "Let's talk about a piece",
+  "contactBody": "Whether you're asking about an available painting, thinking about a commission, or just want to see what's coming next — I'd love to hear from you.",
+  "contactDeliveryNote": "Local delivery available on the Redcliffe Peninsula",
+
+  "footerNote": "All artworks, images and reproductions are the property of the artist."
+}

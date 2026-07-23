@@ -1,0 +1,85 @@
+{
+  "paintings": [
+    {
+      "title": "Twilight Bloom",
+      "status": "available",
+      "price": "$899",
+      "size": "120cm x 90cm",
+      "medium": "Acrylic on double-thick canvas",
+      "frame": "Meranti timber, ready to hang",
+      "finish": "Protective UV satin glaze",
+      "delivery": "Free within the Redcliffe Peninsula",
+      "image": "twilight-bloom.jpg",
+      "detailImages": ["twilight-bloom-2.jpg", "twilight-bloom-3.jpg", "twilight-bloom-4.jpg"],
+      "palette": ["#0d2f3d", "#1c5567", "#6b9b9a", "#f2ecd8", "#1e2f5c"],
+      "description": "Layer over layer of deep teal, worked from dark to light until the colour underneath started coming through. Flannel flowers and native grasses drift across the canvas the way they do at dusk, half seen and half remembered.",
+      "feeling": "The quiet just after the sun goes down."
+    },
+    {
+      "title": "After Rain",
+      "status": "collected",
+      "price": "",
+      "size": "120cm x 90cm",
+      "medium": "Acrylic on double-thick canvas",
+      "frame": "Tasmanian oak timber, ready to hang",
+      "finish": "Protective UV satin glaze",
+      "image": "after-rain.jpg",
+      "detailImages": ["after-rain-2.jpg", "after-rain-3.jpg", "after-rain-4.jpg"],
+      "palette": ["#4d5c4f", "#77866c", "#e4d9c9", "#e08c96", "#c9bcd4"],
+      "description": "The particular green that arrives after a downpour, when everything is heavy and the light has gone soft. Hakea and banksia sit deep in the layers, with pink blooms catching what light is left.",
+      "feeling": "Everything washed clean and holding still."
+    },
+    {
+      "title": "Golden Hour",
+      "status": "collected",
+      "price": "",
+      "size": "100cm x 70cm",
+      "medium": "Acrylic on double-thick canvas",
+      "frame": "Meranti timber, ready to hang",
+      "finish": "Protective satin glaze",
+      "image": "golden-hour.jpg",
+      "detailImages": ["golden-hour-2.jpg", "golden-hour-3.jpg", "golden-hour-4.jpg"],
+      "palette": ["#c9c9a8", "#6f7a55", "#c4674a", "#eaa87f", "#f0e6d2"],
+      "description": "Warm sage and dry-grass neutrals, glazed back over each other until the whole canvas holds a low afternoon light. Paper daisies and pincushions, left loose and open.",
+      "feeling": "Late afternoon, the last warm hour before everything cools."
+    },
+    {
+      "title": "Whispering Natives",
+      "status": "collected",
+      "price": "",
+      "size": "100cm x 70cm",
+      "medium": "Acrylic on double-thick canvas",
+      "frame": "Meranti timber, ready to hang",
+      "finish": "Protective satin glaze",
+      "image": "whispering-natives.jpg",
+      "detailImages": ["whispering-natives-2.jpg", "whispering-natives-3.jpg"],
+      "palette": ["#f0e4d8", "#d4788f", "#8b9273", "#5c6444", "#c9a08f"],
+      "description": "Soft blush and cream built in translucent layers, so the background almost breathes rather than sits flat. Proteas and eucalyptus, restrained, with a lot of space left around them.",
+      "feeling": "Barely there. A conversation happening just out of earshot."
+    },
+    {
+      "title": "Golden Summer Fields",
+      "status": "coming-soon",
+      "price": "",
+      "size": "100cm x 70cm",
+      "medium": "Acrylic on canvas",
+      "image": "",
+      "detailImages": [],
+      "palette": ["#a7b57e", "#dfe0c4", "#fbf5e2", "#f0e0c0", "#c99a68"],
+      "description": "Mossy greens and warm browns, built the same layered way as Twilight Bloom — dark to light, until it glows.",
+      "feeling": ""
+    },
+    {
+      "title": "Pastel Comfort",
+      "status": "coming-soon",
+      "price": "",
+      "size": "60cm x 76cm",
+      "medium": "Acrylic on canvas",
+      "image": "",
+      "detailImages": [],
+      "palette": ["#cfe0a6", "#f4f0d4", "#cddcc2", "#e3a077", "#9c4c3b"],
+      "description": "A single banksia in warm burnt sienna and copper, set against a soft, hand-mixed sage backdrop.",
+      "feeling": ""
+    }
+  ]
+}
