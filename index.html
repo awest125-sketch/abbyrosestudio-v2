@@ -8,7 +8,7 @@
 <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <!--
   ANALYTICS — GoatCounter: free, no cookies, simple dashboard.
   1. goatcounter.com -> Sign up (free) -> pick a site code, e.g. "abbyrosestudio"
@@ -18,15 +18,15 @@
 <script data-goatcounter="https://YOURCODE.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <style>
   :root{
-    --ink:#2b2620;
-    --muted:#6f6a62;
-    --paper:#faf6ee;
-    --paper-deep:#f2ebda;
-    --accent:#77715f;        /* neutral stone-olive (was teal) */
-    --accent-deep:#4e493c;
-    --sage:#8a9a7e;
-    --sage-pale:#e6e8dc;
-    --line:#dbd3c1;
+    --ink:#0B3142;
+    --muted:#44606e;
+    --paper:#FFFFF8;
+    --paper-deep:#E7EDE7;
+    --accent:#AC8887;        /* dusty rose */
+    --accent-deep:#0B3142;   /* deep ink for buttons + dark sections */
+    --sage:#CFDBD5;
+    --sage-pale:#E7EDE7;
+    --line:#CFDBD5;
     --radius:2px;
   }
   *{box-sizing:border-box;}
@@ -40,7 +40,7 @@
     font-family:'Work Sans', sans-serif; font-weight:400; line-height:1.6;
     -webkit-font-smoothing:antialiased;
   }
-  h1,h2,h3{ font-family:'Fraunces', serif; font-weight:500; margin:0; letter-spacing:-0.01em; }
+  h1,h2,h3{ font-family:'Montserrat', sans-serif; font-weight:600; margin:0; letter-spacing:0.01em; }
   a{color:inherit;}
   img{max-width:100%; display:block;}
   .wrap{max-width:1180px; margin:0 auto; padding:0 24px;}
@@ -51,12 +51,12 @@
   /* image protection (deterrent) */
   img{ -webkit-user-select:none; user-select:none; -webkit-user-drag:none; }
   .protected{ position:relative; }
-  .protected::after{ content:""; position:absolute; inset:0; }
+  .protected::after{ content:""; position:absolute; inset:0; z-index:1; }
 
   /* ---------- NAV ---------- */
   header.site-nav{
     position:fixed; top:0; left:0; right:0; z-index:50;
-    background:rgba(250,246,238,0.9);
+    background:rgba(255,255,248,0.92);
     backdrop-filter:blur(8px);
     border-bottom:1px solid transparent;
     transition:border-color .3s ease;
@@ -66,7 +66,7 @@
     display:flex; align-items:center; justify-content:space-between;
     padding:10px 24px; max-width:1180px; margin:0 auto;
   }
-  .nav-logo{ height:56px; width:auto; color:var(--ink); }
+  .nav-logo{ height:84px; width:auto; color:var(--ink); }
   .nav-logo svg, .nav-logo img{ height:100%; width:auto; }
   nav.links{ display:flex; gap:30px; }
   nav.links a{
@@ -99,7 +99,7 @@
   }
   .hero-text{
     display:flex; flex-direction:column; justify-content:center;
-    padding:120px 56px 72px;
+    padding:150px 56px 72px;
   }
   .hero-eyebrow{
     font-size:12.5px; letter-spacing:0.16em; text-transform:uppercase;
@@ -107,7 +107,7 @@
   }
   .hero h1{
     font-size:clamp(2.5rem, 4.6vw, 4.2rem);
-    font-weight:400; font-style:italic; line-height:1.06; max-width:12ch;
+    font-weight:600; line-height:1.12; max-width:16ch; text-transform:none;
   }
   .hero-sub{ margin-top:24px; max-width:40ch; font-size:16.5px; color:var(--muted); }
   .hero-ctas{ margin-top:36px; display:flex; gap:14px; flex-wrap:wrap; }
@@ -135,7 +135,7 @@
   .stipple-divider{
     height:64px; width:100%;
     background-repeat:repeat-x; background-size:120px 64px;
-    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='64' viewBox='0 0 120 64'><g fill='none' stroke='%2377715f' stroke-width='2.6' stroke-linecap='round' opacity='0.5'><ellipse cx='14' cy='18' rx='2.6' ry='4'/><ellipse cx='30' cy='30' rx='2.6' ry='4.2'/><ellipse cx='47' cy='14' rx='2.4' ry='3.8'/><ellipse cx='63' cy='38' rx='2.6' ry='4'/><ellipse cx='80' cy='22' rx='2.4' ry='3.8'/><ellipse cx='97' cy='34' rx='2.6' ry='4.2'/><ellipse cx='112' cy='16' rx='2.4' ry='3.8'/></g></svg>");
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='64' viewBox='0 0 120 64'><g fill='none' stroke='%23AC8887' stroke-width='2.6' stroke-linecap='round' opacity='0.5'><ellipse cx='14' cy='18' rx='2.6' ry='4'/><ellipse cx='30' cy='30' rx='2.6' ry='4.2'/><ellipse cx='47' cy='14' rx='2.4' ry='3.8'/><ellipse cx='63' cy='38' rx='2.6' ry='4'/><ellipse cx='80' cy='22' rx='2.4' ry='3.8'/><ellipse cx='97' cy='34' rx='2.6' ry='4.2'/><ellipse cx='112' cy='16' rx='2.4' ry='3.8'/></g></svg>");
   }
 
   section{ padding:96px 0; }
@@ -153,9 +153,9 @@
     padding:76px 0; text-align:center;
   }
   .philosophy p{
-    font-family:'Fraunces', serif; font-style:italic; font-weight:400;
+    font-family:'Montserrat', sans-serif; font-weight:500;
     font-size:clamp(1.3rem, 2.9vw, 1.95rem); line-height:1.5;
-    max-width:850px; margin:0 auto; color:#f3efe4;
+    max-width:850px; margin:0 auto; color:#FFFFF8;
   }
 
   /* ---------- GALLERY ---------- */
@@ -183,7 +183,7 @@
   .painting-price{ font-size:14.5px; font-weight:500; color:var(--accent-deep); white-space:nowrap; }
   .painting-desc{ color:var(--muted); font-size:14.5px; margin-top:10px; max-width:58ch; }
   .painting-feeling{
-    font-family:'Fraunces', serif; font-style:italic; color:var(--accent);
+    font-family:'Montserrat', sans-serif; font-style:italic; color:var(--accent);
     font-size:15px; margin-top:8px;
   }
   .painting-swatches{ display:flex; gap:6px; margin-top:14px; }
@@ -210,7 +210,7 @@
   }
   .spotlight-facts b{ font-weight:600; }
   .spotlight-price{
-    font-family:'Fraunces', serif; font-size:1.9rem; margin-top:26px; color:var(--accent-deep);
+    font-family:'Montserrat', sans-serif; font-weight:600; font-size:1.7rem; margin-top:26px; color:var(--accent-deep);
   }
   .spotlight .btn{ margin-top:28px; }
 
@@ -231,7 +231,7 @@
   /* ---------- ABOUT ---------- */
   .about-grid{ display:grid; grid-template-columns:0.9fr 1.1fr; gap:64px; align-items:center; }
   @media (max-width:860px){ .about-grid{ grid-template-columns:1fr; gap:36px; } }
-  .about-photo{ position:relative; overflow:hidden; aspect-ratio:4/5; }
+  .about-photo{ position:relative; overflow:hidden; aspect-ratio:4/5; border-radius:50%; max-width:440px; margin:0 auto; }
   .about-photo img{
     width:100%; height:100%; object-fit:cover;
     object-position:50% 32%; transform:scale(1.12);  /* slight crop-in as requested */
@@ -240,21 +240,21 @@
 
   /* ---------- EARLY ACCESS ---------- */
   .early{ background:var(--accent-deep); color:var(--paper); text-align:center; }
-  .early .eyebrow{ color:#cfc8ae; }
+  .early .eyebrow{ color:#CFDBD5; }
   .early h2{ color:var(--paper); font-size:clamp(1.8rem,3.2vw,2.5rem); }
-  .early p{ color:rgba(250,246,238,0.75); max-width:46ch; margin:16px auto 0; }
+  .early p{ color:rgba(255,255,248,0.78); max-width:46ch; margin:16px auto 0; }
   .early form{
     margin-top:32px; display:flex; gap:10px; justify-content:center; flex-wrap:wrap;
   }
   .early input[type=email]{
     padding:14px 16px; font-size:15px; font-family:'Work Sans',sans-serif;
-    border:1px solid rgba(250,246,238,0.35); background:rgba(250,246,238,0.08);
+    border:1px solid rgba(255,255,248,0.4); background:rgba(255,255,248,0.08);
     color:var(--paper); border-radius:var(--radius); width:min(320px, 80vw);
   }
-  .early input::placeholder{ color:rgba(250,246,238,0.5); }
+  .early input::placeholder{ color:rgba(255,255,248,0.55); }
   .early .btn{ background:var(--paper); color:var(--accent-deep); }
   .early .btn:hover{ background:#fff; }
-  .early .note{ font-size:12.5px; margin-top:14px; color:rgba(250,246,238,0.55); }
+  .early .note{ font-size:12.5px; margin-top:14px; color:rgba(255,255,248,0.6); }
 
   /* ---------- CONTACT ---------- */
   .contact-wrap{ display:grid; grid-template-columns:1fr 1fr; gap:64px; }
@@ -282,7 +282,7 @@
   /* ---------- FOOTER ---------- */
   footer{ border-top:1px solid var(--line); padding:48px 0 36px; }
   .footer-inner{ display:flex; justify-content:space-between; align-items:center; gap:20px; flex-wrap:wrap; }
-  .logo-mark{ height:64px; width:auto; color:var(--ink); }
+  .logo-mark{ height:96px; width:auto; color:var(--ink); }
   .foot-links{ display:flex; gap:26px; flex-wrap:wrap; }
   .foot-links a{
     text-decoration:none; font-size:13px; letter-spacing:0.06em;
@@ -297,7 +297,7 @@
   /* ---------- LIGHTBOX (swipeable detail viewer) ---------- */
   .lightbox{
     position:fixed; inset:0; z-index:100; display:none;
-    background:rgba(24,21,16,0.94); color:var(--paper);
+    background:rgba(11,49,66,0.96); color:var(--paper);
     flex-direction:column;
   }
   .lightbox.open{ display:flex; }
@@ -305,7 +305,7 @@
     display:flex; justify-content:space-between; align-items:center;
     padding:16px 20px;
   }
-  .lb-title{ font-family:'Fraunces',serif; font-style:italic; font-size:1.15rem; }
+  .lb-title{ font-family:'Montserrat',sans-serif; font-weight:600; font-size:1.05rem; letter-spacing:0.02em; }
   .lb-close{
     background:none; border:none; color:var(--paper); font-size:26px;
     cursor:pointer; padding:6px 10px; line-height:1;
@@ -319,20 +319,20 @@
     user-select:none; -webkit-user-drag:none;
   }
   .lb-arrow{
-    position:absolute; top:50%; transform:translateY(-50%);
-    background:rgba(250,246,238,0.12); border:none; color:var(--paper);
+    position:absolute; top:50%; transform:translateY(-50%); z-index:3;
+    background:rgba(255,255,248,0.14); border:none; color:var(--paper);
     font-size:22px; width:44px; height:44px; border-radius:50%;
     cursor:pointer; transition:background .2s ease;
   }
-  .lb-arrow:hover{ background:rgba(250,246,238,0.25); }
+  .lb-arrow:hover{ background:rgba(255,255,248,0.28); }
   .lb-prev{ left:14px; } .lb-next{ right:14px; }
   .lb-dots{ display:flex; gap:8px; justify-content:center; padding:16px 0 8px; }
   .lb-dots span{
-    width:8px; height:8px; border-radius:50%; background:rgba(250,246,238,0.3);
+    width:8px; height:8px; border-radius:50%; background:rgba(255,255,248,0.35);
     transition:background .2s ease;
   }
   .lb-dots span.on{ background:var(--paper); }
-  .lb-caption{ text-align:center; font-size:13px; color:rgba(250,246,238,0.65); padding-bottom:18px; }
+  .lb-caption{ text-align:center; font-size:13px; color:rgba(255,255,248,0.7); padding-bottom:18px; }
   @media (max-width:760px){
     .lb-arrow{ display:none; } /* swipe on touch */
   }
@@ -364,8 +364,8 @@
   </div>
   <div class="hero-text">
     <span class="hero-eyebrow" data-txt="heroEyebrow">Original Australian botanical paintings</span>
-    <h1 data-txt="heroHeading">Painted to hold a feeling</h1>
-    <p class="hero-sub" data-txt="heroSub">Hand-painted originals inspired by Australian native flora, made one canvas at a time on the Redcliffe Peninsula.</p>
+    <h1 data-txt="heroHeading">Inspired by Australia's Native Landscape</h1>
+    <p class="hero-sub" data-txt="heroSub">Hand-painted originals inspired by Australian native flora, created one canvas at a time on the Redcliffe Peninsula. Each piece is painted to hold a feeling, using layered colour and tonal depth to bring warmth, softness and a quiet connection to nature.</p>
     <div class="hero-ctas">
       <a href="#available" class="btn" data-goatcounter-click="hero:view-available">View available work</a>
       <a href="#gallery" class="btn ghost" data-goatcounter-click="hero:view-collection">The collection</a>
@@ -409,22 +409,6 @@
   </div>
 </section>
 
-<section id="about">
-  <div class="wrap">
-    <div class="about-grid">
-      <div class="about-photo protected">
-        <img src="assets/profile.jpg" alt="Abby, the artist behind Abby Rose Studio">
-      </div>
-      <div class="about-body">
-        <span class="eyebrow" data-txt="aboutEyebrow">About</span>
-        <h2 data-txt="aboutHeading">Hi, I'm Abby</h2>
-        <p data-txt="aboutBody">I'm a graphic designer by trade and a painter by instinct, working from the Redcliffe Peninsula in Queensland. Every background is built up in layers rather than painted flat — a dark base, a mid glaze, then a light pass over the top — which is what gives each piece its depth. The botanicals go on afterwards: fine white contour lines, stippled texture, and native flora drawn from the real plant.</p>
-        <p data-txt="aboutBody2">Every original comes with a signed Certificate of Authenticity. All copyrights and reproductions are reserved for the artist.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
 <section class="early">
   <div class="wrap">
     <span class="eyebrow" data-txt="earlyAccessEyebrow">Early Access</span>
@@ -438,6 +422,24 @@
       <button type="submit" class="btn" data-txt="earlyAccessButton">Join the list</button>
     </form>
     <p class="note" data-txt="earlyAccessNote">No spam. Just new work and the occasional studio note.</p>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="about-photo protected">
+        <img src="assets/profile.jpg" alt="Abby, the artist behind Abby Rose Studio">
+      </div>
+      <div class="about-body">
+        <span class="eyebrow" data-txt="aboutEyebrow">About</span>
+        <h2 data-txt="aboutHeading">Hi, I'm Abby</h2>
+        <p data-txt="aboutBody">I'm a graphic designer by trade and a painter by passion, creating contemporary Australian botanical artworks from the Redcliffe Peninsula in Queensland.</p>
+        <p data-txt="aboutBody2">Painting has always been my dream, but for now you'll usually find me at the easel on weekends, slowly building each original one layer at a time. Every background is created through multiple layers of colour and glazing, giving each piece its soft, atmospheric depth. I then bring Australia's native flora to life with delicate contour lines, textured details and subtle tonal highlights, creating botanicals that feel both contemporary and timeless.</p>
+        <p data-txt="aboutBody3">Each painting is an original, inspired by the quiet beauty of Australia's landscape and designed to bring warmth, softness and a sense of calm into your home.</p>
+        <p data-txt="aboutBody4">Every original comes with a signed Certificate of Authenticity.</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -458,6 +460,7 @@
            Emails arrive at whatever address your Formspree account uses —
            to redirect later, just change the email in Formspree settings, not here. -->
       <form class="contact-form" action="https://formspree.io/f/xwvgwkkr" method="POST">
+        <input type="hidden" name="_next" value="https://abbyrosestudio.com.au/thanks.html">
         <div class="field">
           <label for="name">Name</label>
           <input type="text" id="name" name="name" required autocomplete="name">
@@ -671,7 +674,7 @@
               </div>
               <div class="spotlight-body">
                 <span class="eyebrow">Available Now</span>
-                <h3 style="font-size:clamp(1.8rem,3vw,2.5rem);">${p.title}</h3>
+                <h3 style="font-size:clamp(1.7rem,2.8vw,2.3rem);">${p.title}</h3>
                 ${p.description ? `<p class="desc">${p.description}</p>` : ''}
                 ${p.feeling ? `<p class="painting-feeling">${p.feeling}</p>` : ''}
                 <div class="spotlight-facts">${facts.join('')}</div>
