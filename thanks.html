@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Message received — Abby Rose Studio</title>
+<meta name="description" content="Thank you for your message to Abby Rose Studio.">
+<link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=Work+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#2b2620; --muted:#6f6a62; --paper:#faf6ee; --paper-deep:#f2ebda;
+    --accent:#77715f; --accent-deep:#4e493c;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Work Sans',sans-serif; line-height:1.6;
+    min-height:100vh; display:flex; align-items:center; justify-content:center;
+    padding:32px 24px; text-align:center;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{ max-width:540px; }
+  .logo{
+    display:inline-block; height:80px; margin:0 auto 44px;
+    color:var(--ink); text-decoration:none;
+  }
+  .logo img{ height:100%; width:auto; display:block; }
+  .eyebrow{
+    font-size:12.5px; letter-spacing:0.16em; text-transform:uppercase;
+    color:var(--accent); font-weight:600; margin-bottom:16px;
+  }
+  h1{
+    font-family:'Fraunces',serif; font-weight:500; font-style:italic;
+    font-size:clamp(2rem, 5vw, 2.8rem); margin:0 0 22px;
+    color:var(--accent-deep); line-height:1.15; letter-spacing:-0.01em;
+  }
+  p{
+    color:var(--muted); font-size:16px; line-height:1.65;
+    margin:0 auto 14px; max-width:44ch;
+  }
+  .stipple{
+    height:44px; margin:36px auto 32px; max-width:240px;
+    background-repeat:repeat-x; background-size:120px 44px;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='44' viewBox='0 0 120 44'><g fill='none' stroke='%2377715f' stroke-width='2.6' stroke-linecap='round' opacity='0.5'><ellipse cx='14' cy='14' rx='2.6' ry='4'/><ellipse cx='30' cy='26' rx='2.6' ry='4.2'/><ellipse cx='47' cy='12' rx='2.4' ry='3.8'/><ellipse cx='63' cy='30' rx='2.6' ry='4'/><ellipse cx='80' cy='18' rx='2.4' ry='3.8'/><ellipse cx='97' cy='28' rx='2.6' ry='4.2'/><ellipse cx='112' cy='14' rx='2.4' ry='3.8'/></g></svg>");
+  }
+  .btns{ display:flex; gap:14px; justify-content:center; flex-wrap:wrap; margin-top:8px; }
+  .btn{
+    display:inline-block; background:var(--accent-deep); color:var(--paper);
+    padding:14px 26px; font-size:13px; letter-spacing:0.07em; text-transform:uppercase;
+    font-weight:500; text-decoration:none; border-radius:2px;
+    transition:background .2s ease;
+  }
+  .btn:hover{ background:var(--ink); }
+  .btn.ghost{
+    background:transparent; color:var(--ink);
+    box-shadow:inset 0 0 0 1px var(--ink);
+  }
+  .btn.ghost:hover{ background:var(--ink); color:var(--paper); }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <a href="index.html" class="logo" aria-label="Abby Rose Studio home">
+      <img src="assets/logo.svg" alt="Abby Rose Studio">
+    </a>
+    <span class="eyebrow">Message received</span>
+    <h1>Thank you — your note is on its way.</h1>
+    <p>I read every message myself and I'll get back to you personally, usually within a day or two.</p>
+    <p>In the meantime, feel free to keep exploring the studio.</p>
+    <div class="stipple" aria-hidden="true"></div>
+    <div class="btns">
+      <a href="index.html" class="btn">Back to the studio</a>
+      <a href="index.html#gallery" class="btn ghost">View the collection</a>
+    </div>
+  </div>
+</body>
+</html>
