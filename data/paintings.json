@@ -115,13 +115,22 @@
       "feeling": ""
     },
     {
-      "title": "Pastel Comfort",
-      "status": "coming-soon",
-      "price": "",
-      "size": "60cm x 76cm",
-      "medium": "Acrylic on canvas",
-      "image": "",
-      "detailImages": [],
+      "title": "Flora Haze",
+      "status": "available",
+      "price": "$350",
+      "size": "61cm x 76cm",
+      "medium": "Acrylic on double-thick canvas",
+      "frame": "Meranti timber, ready to hang",
+      "finish": "Protective UV satin glaze",
+      "delivery": "Free within the Redcliffe Peninsula",
+      "image": "abby-rose-studio-original-artwork-australian-botanical-flora-haze-1.jpg",
+      "detailImages": [
+        "abby-rose-studio-original-artwork-australian-botanical-flora-haze-6.jpg",
+        "abby-rose-studio-original-artwork-australian-botanical-flora-haze-4.jpg",
+        "abby-rose-studio-original-artwork-australian-botanical-flora-haze-5.jpg",
+        "abby-rose-studio-original-artwork-australian-botanical-flora-haze-2.jpg",
+        "abby-rose-studio-original-artwork-australian-botanical-flora-haze-3.jpg"
+      ],
       "palette": [
         "#cfe0a6",
         "#f4f0d4",
@@ -129,8 +138,8 @@
         "#e3a077",
         "#9c4c3b"
       ],
-      "description": "A single banksia in warm burnt sienna and copper, set against a soft, hand-mixed sage backdrop.",
-      "feeling": ""
+      "description": "Flora Haze is inspired by Australia's native flora and the soft, muted colours of the landscape. Built through layered colour and tonal depth, delicate botanicals emerge from a gentle haze, creating a calm, atmospheric composition.",
+      "feeling": "The stillness of low light through leaves."
     }
   ]
 }
