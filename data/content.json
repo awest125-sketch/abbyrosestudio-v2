@@ -1,45 +1,88 @@
 {
-  "_readme": "Everything you can see as words on the website lives in this file. Change the text between the quote marks, save, and the site updates. Don't remove the quote marks or the commas.",
-
-  "siteTitle": "Abby Rose Studio",
-  "instagramUrl": "https://instagram.com/abbyrose_studio",
-  "instagramHandle": "@abbyrose_studio",
-  "contactEmail": "awest125@gmail.com",
-  "location": "Redcliffe Peninsula, Queensland",
-
-  "heroEyebrow": "Original Australian botanical paintings",
-  "heroHeading": "Inspired by Australia's Native Landscape",
-  "heroSub": "Hand-painted originals inspired by Australian native flora, created one canvas at a time on the Redcliffe Peninsula. Each piece is painted to hold a feeling, using layered colour and tonal depth to bring warmth, softness and a quiet connection to nature.",
-
-  "statement": "Inspired by Australia's native flora, I paint atmospheric botanical artworks using layered colour and translucent depth. Each original is created to capture a feeling rather than a perfect representation of nature.",
-
-  "galleryEyebrow": "The Collection",
-  "galleryHeading": "Original works",
-  "galleryIntro": "Each painting is a one-off original. Tap any piece to see it up close.",
-
-  "availableEyebrow": "Available Now",
-
-  "upcomingEyebrow": "In the Studio",
-  "upcomingHeading": "Coming next",
-  "upcomingIntro": "Pieces currently on the easel. Join the early access list to see them before they're listed.",
-
-  "aboutEyebrow": "About",
-  "aboutHeading": "Hi, I'm Abby",
-  "aboutBody": "I'm a graphic designer by trade and a painter by passion, creating contemporary Australian botanical artworks from the Redcliffe Peninsula in Queensland.",
-  "aboutBody2": "Painting has always been my dream, but for now you'll usually find me at the easel on weekends, slowly building each original one layer at a time. Every background is created through multiple layers of colour and glazing, giving each piece its soft, atmospheric depth. I then bring Australia's native flora to life with delicate contour lines, textured details and subtle tonal highlights, creating botanicals that feel both contemporary and timeless.",
-  "aboutBody3": "Each painting is an original, inspired by the quiet beauty of Australia's landscape and designed to bring warmth, softness and a sense of calm into your home.",
-  "aboutBody4": "Every original comes with a signed Certificate of Authenticity.",
-
-  "earlyAccessEyebrow": "Early Access",
-  "earlyAccessHeading": "See new work first",
-  "earlyAccessBody": "New paintings go to this list before they're listed anywhere else, with first pick before a piece goes public.",
-  "earlyAccessButton": "Join the list",
-  "earlyAccessNote": "No spam. Just new work and the occasional studio note.",
-
-  "contactEyebrow": "Get in Touch",
-  "contactHeading": "Let's talk about a piece",
-  "contactBody": "Whether you're asking about an available painting, thinking about a commission, or just want to see what's coming next — I'd love to hear from you.",
-  "contactDeliveryNote": "Local delivery available on the Redcliffe Peninsula",
-
-  "footerNote": "All artworks, images and reproductions are the property of the artist."
+  "paintings": [
+    {
+      "title": "Twilight Bloom",
+      "status": "available",
+      "price": "$899",
+      "size": "120cm x 90cm",
+      "medium": "Acrylic on double-thick canvas",
+      "frame": "Meranti timber, ready to hang",
+      "finish": "Protective UV satin glaze",
+      "delivery": "Free within the Redcliffe Peninsula",
+      "image": "twilight-bloom.jpg",
+      "detailImages": ["twilight-bloom-2.jpg", "twilight-bloom-3.jpg", "twilight-bloom-4.jpg"],
+      "palette": ["#0d2f3d", "#1c5567", "#6b9b9a", "#f2ecd8", "#1e2f5c"],
+      "description": "As the light softens and the day begins to fade, Twilight Bloom captures the quiet beauty of Australia's native flora in the golden moments before dusk. Gentle layers of colour, atmospheric depth and delicate botanical forms create a sense of warmth and stillness, inviting the viewer to pause and reflect.",
+      "feeling": ""
+    },
+    {
+      "title": "After Rain",
+      "status": "collected",
+      "price": "",
+      "size": "120cm x 90cm",
+      "medium": "Acrylic on double-thick canvas",
+      "frame": "Tasmanian oak timber, ready to hang",
+      "finish": "Protective UV satin glaze",
+      "image": "after-rain.jpg",
+      "detailImages": ["after-rain-2.jpg", "after-rain-3.jpg", "after-rain-4.jpg"],
+      "palette": ["#4d5c4f", "#77866c", "#e4d9c9", "#e08c96", "#c9bcd4"],
+      "description": "As the rain clears and the landscape begins to breathe again, After Rain captures the quiet renewal of Australia's native flora. Soft layers of colour, gentle movement and atmospheric depth evoke the freshness that lingers after a shower, inviting a sense of calm and reflection.",
+      "feeling": ""
+    },
+    {
+      "title": "Golden Hour",
+      "status": "collected",
+      "price": "",
+      "size": "100cm x 70cm",
+      "medium": "Acrylic on double-thick canvas",
+      "frame": "Meranti timber, ready to hang",
+      "finish": "Protective satin glaze",
+      "image": "golden-hour.jpg",
+      "detailImages": ["golden-hour-2.jpg", "golden-hour-3.jpg", "golden-hour-4.jpg"],
+      "palette": ["#c9c9a8", "#6f7a55", "#c4674a", "#eaa87f", "#f0e6d2"],
+      "description": "As the afternoon light turns warm and golden, Golden Hour celebrates Australia's native flora bathed in the final glow of the day. Layered colour, soft light and delicate botanical forms create a feeling of warmth and quiet beauty, capturing the fleeting magic of the landscape before sunset.",
+      "feeling": ""
+    },
+    {
+      "title": "Whispering Natives",
+      "status": "collected",
+      "price": "",
+      "size": "100cm x 70cm",
+      "medium": "Acrylic on double-thick canvas",
+      "frame": "Meranti timber, ready to hang",
+      "finish": "Protective satin glaze",
+      "image": "whispering-natives.jpg",
+      "detailImages": ["whispering-natives-2.jpg", "whispering-natives-3.jpg"],
+      "palette": ["#f0e4d8", "#d4788f", "#8b9273", "#5c6444", "#c9a08f"],
+      "description": "As a gentle breeze moves through the bush, Whispering Natives captures the quiet rhythm and understated beauty of Australia's native flora. Layered colour, soft texture and atmospheric depth create a sense of movement and stillness, inviting the viewer to slow down and connect with nature.",
+      "feeling": ""
+    },
+    {
+      "title": "Golden Summer Fields",
+      "status": "coming-soon",
+      "price": "",
+      "size": "100cm x 70cm",
+      "medium": "Acrylic on canvas",
+      "image": "",
+      "detailImages": [],
+      "palette": ["#a7b57e", "#dfe0c4", "#fbf5e2", "#f0e0c0", "#c99a68"],
+      "description": "Mossy greens and warm browns, built the same layered way as Twilight Bloom — dark to light, until it glows.",
+      "feeling": ""
+    },
+    {
+      "title": "Flora Haze",
+      "status": "available",
+      "price": "$350",
+      "size": "61cm x 76cm",
+      "medium": "Acrylic on double-thick canvas",
+      "frame": "Meranti timber, ready to hang",
+      "finish": "Protective UV satin glaze",
+      "delivery": "Free within the Redcliffe Peninsula",
+      "image": "abby-rose-studio-original-artwork-australian-botanical-flora-haze-1.jpg",
+      "detailImages": ["abby-rose-studio-original-artwork-australian-botanical-flora-haze-6.jpg", "abby-rose-studio-original-artwork-australian-botanical-flora-haze-4.jpg", "abby-rose-studio-original-artwork-australian-botanical-flora-haze-5.jpg", "abby-rose-studio-original-artwork-australian-botanical-flora-haze-2.jpg", "abby-rose-studio-original-artwork-australian-botanical-flora-haze-3.jpg"],
+      "palette": ["#cfe0a6", "#f4f0d4", "#cddcc2", "#e3a077", "#9c4c3b"],
+      "description": "Flora Haze is inspired by Australia's native flora and the soft, muted colours of the landscape. Built through layered colour and tonal depth, delicate botanicals emerge from a gentle haze, creating a calm, atmospheric composition.",
+      "feeling": "The stillness of low light through leaves."
+    }
+  ]
 }
