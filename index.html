@@ -8,13 +8,8 @@
 <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-<!--
-  ANALYTICS — GoatCounter: free, no cookies, simple dashboard.
-  1. goatcounter.com -> Sign up (free) -> pick a site code, e.g. "abbyrosestudio"
-  2. Replace YOURCODE below (one place only)
-  3. View your dashboard anytime at https://YOURCODE.goatcounter.com
--->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Work+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
+<!-- GoatCounter analytics — if you've already set your site code, replace YOURCODE below -->
 <script data-goatcounter="https://YOURCODE.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <style>
   :root{
@@ -22,22 +17,16 @@
     --muted:#44606e;
     --paper:#FFFFF8;
     --paper-deep:#E7EDE7;
-    --accent:#AC8887;        /* dusty rose */
-    --accent-deep:#0B3142;   /* deep ink for buttons + dark sections */
-    --sage:#CFDBD5;
-    --sage-pale:#E7EDE7;
+    --accent:#AC8887;
+    --accent-deep:#0B3142;
     --line:#CFDBD5;
     --radius:2px;
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
-  @media (prefers-reduced-motion: reduce){
-    html{scroll-behavior:auto;}
-    *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
-  }
   body{
     margin:0; background:var(--paper); color:var(--ink);
-    font-family:'Work Sans', sans-serif; font-weight:400; line-height:1.6;
+    font-family:'Work Sans', sans-serif; font-weight:400; line-height:1.65;
     -webkit-font-smoothing:antialiased;
   }
   h1,h2,h3{ font-family:'Montserrat', sans-serif; font-weight:600; margin:0; letter-spacing:0.01em; }
@@ -48,16 +37,26 @@
     outline:2px solid var(--accent); outline-offset:3px;
   }
 
-  /* image protection (deterrent) */
+  /* image protection (deterrent; screenshots cannot be blocked by any website) */
   img{ -webkit-user-select:none; user-select:none; -webkit-user-drag:none; }
   .protected{ position:relative; }
-  .protected::after{ content:""; position:absolute; inset:0; z-index:1; }
+  .protected::after{ content:""; position:absolute; inset:0; z-index:1; pointer-events:none; }
+
+  /* ---------- scroll reveal ---------- */
+  .reveal{ opacity:0; transform:translateY(26px); transition:opacity .8s ease, transform .8s cubic-bezier(.2,.65,.3,1); }
+  .reveal.in{ opacity:1; transform:none; }
+  .reveal.d1{ transition-delay:.08s; } .reveal.d2{ transition-delay:.16s; } .reveal.d3{ transition-delay:.24s; }
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    .reveal{ opacity:1; transform:none; transition:none; }
+    *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
+  }
 
   /* ---------- NAV ---------- */
   header.site-nav{
     position:fixed; top:0; left:0; right:0; z-index:50;
     background:rgba(255,255,248,0.92);
-    backdrop-filter:blur(8px);
+    backdrop-filter:blur(10px);
     border-bottom:1px solid transparent;
     transition:border-color .3s ease;
   }
@@ -67,11 +66,12 @@
     padding:10px 24px; max-width:1180px; margin:0 auto;
   }
   .nav-logo{ height:84px; width:auto; color:var(--ink); }
-  .nav-logo svg, .nav-logo img{ height:100%; width:auto; }
-  nav.links{ display:flex; gap:30px; }
+  .nav-logo img{ height:100%; width:auto; }
+  nav.links{ display:flex; gap:34px; }
   nav.links a{
-    text-decoration:none; font-size:13.5px; letter-spacing:0.06em;
-    text-transform:uppercase; color:var(--ink); opacity:0.75; transition:opacity .2s ease;
+    text-decoration:none; font-size:12.5px; letter-spacing:0.14em;
+    text-transform:uppercase; color:var(--ink); opacity:0.7; transition:opacity .2s ease;
+    font-weight:500;
   }
   nav.links a:hover{ opacity:1; }
   .nav-toggle{ display:none; background:none; border:none; cursor:pointer; padding:6px; }
@@ -87,7 +87,7 @@
     .nav-toggle{ display:block; }
   }
 
-  /* ---------- HERO (split on desktop, full-bleed on mobile) ---------- */
+  /* ---------- HERO ---------- */
   .hero{
     display:grid; grid-template-columns:1fr 1fr;
     min-height:100vh; align-items:stretch;
@@ -95,36 +95,38 @@
   .hero-photo{ position:relative; overflow:hidden; background:var(--paper-deep); }
   .hero-photo img{
     position:absolute; inset:0; width:100%; height:100%;
-    object-fit:cover; object-position:50% 30%;
+    object-fit:cover; object-position:50% 22%;
   }
   .hero-text{
     display:flex; flex-direction:column; justify-content:center;
-    padding:150px 56px 72px;
+    padding:160px 60px 80px;
   }
   .hero-eyebrow{
-    font-size:12.5px; letter-spacing:0.16em; text-transform:uppercase;
-    color:var(--accent); font-weight:600; margin-bottom:20px;
+    font-size:11.5px; letter-spacing:0.22em; text-transform:uppercase;
+    color:var(--accent); font-weight:600; margin-bottom:24px;
   }
   .hero h1{
-    font-size:clamp(2.5rem, 4.6vw, 4.2rem);
-    font-weight:600; line-height:1.12; max-width:16ch; text-transform:none;
+    font-size:clamp(2.2rem, 3.9vw, 3.6rem);
+    font-weight:600; line-height:1.14; max-width:17ch; letter-spacing:0;
   }
-  .hero-sub{ margin-top:24px; max-width:40ch; font-size:16.5px; color:var(--muted); }
-  .hero-ctas{ margin-top:36px; display:flex; gap:14px; flex-wrap:wrap; }
+  .hero-rule{ width:56px; height:2px; background:var(--accent); margin:30px 0 26px; }
+  .hero-sub{ max-width:44ch; font-size:16px; color:var(--muted); }
+  .hero-ctas{ margin-top:38px; display:flex; gap:14px; flex-wrap:wrap; }
   @media (max-width:860px){
     .hero{ grid-template-columns:1fr; min-height:auto; }
-    .hero-photo{ height:72vh; min-height:420px; }
-    .hero-photo img{ object-position:50% 25%; }
-    .hero-text{ padding:48px 24px 56px; }
+    /* mobile: anchor to the TOP of the photo so feet crop off the bottom */
+    .hero-photo{ height:64vh; min-height:400px; }
+    .hero-photo img{ object-position:50% 0%; }
+    .hero-text{ padding:44px 24px 56px; }
   }
 
   .btn{
     display:inline-block; background:var(--accent-deep); color:var(--paper);
-    padding:14px 26px; font-size:13px; letter-spacing:0.07em; text-transform:uppercase;
-    font-weight:500; text-decoration:none; border:none; cursor:pointer;
-    border-radius:var(--radius); transition:background .2s ease;
+    padding:15px 30px; font-size:12px; letter-spacing:0.14em; text-transform:uppercase;
+    font-weight:600; text-decoration:none; border:none; cursor:pointer;
+    border-radius:var(--radius); transition:background .25s ease, transform .25s ease;
   }
-  .btn:hover{ background:var(--ink); }
+  .btn:hover{ background:#123f54; transform:translateY(-1px); }
   .btn.ghost{
     background:transparent; color:var(--ink);
     box-shadow:inset 0 0 0 1px var(--ink);
@@ -135,119 +137,94 @@
   .stipple-divider{
     height:64px; width:100%;
     background-repeat:repeat-x; background-size:120px 64px;
-    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='64' viewBox='0 0 120 64'><g fill='none' stroke='%23AC8887' stroke-width='2.6' stroke-linecap='round' opacity='0.5'><ellipse cx='14' cy='18' rx='2.6' ry='4'/><ellipse cx='30' cy='30' rx='2.6' ry='4.2'/><ellipse cx='47' cy='14' rx='2.4' ry='3.8'/><ellipse cx='63' cy='38' rx='2.6' ry='4'/><ellipse cx='80' cy='22' rx='2.4' ry='3.8'/><ellipse cx='97' cy='34' rx='2.6' ry='4.2'/><ellipse cx='112' cy='16' rx='2.4' ry='3.8'/></g></svg>");
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='64' viewBox='0 0 120 64'><g fill='none' stroke='%23AC8887' stroke-width='2.6' stroke-linecap='round' opacity='0.45'><ellipse cx='14' cy='18' rx='2.6' ry='4'/><ellipse cx='30' cy='30' rx='2.6' ry='4.2'/><ellipse cx='47' cy='14' rx='2.4' ry='3.8'/><ellipse cx='63' cy='38' rx='2.6' ry='4'/><ellipse cx='80' cy='22' rx='2.4' ry='3.8'/><ellipse cx='97' cy='34' rx='2.6' ry='4.2'/><ellipse cx='112' cy='16' rx='2.4' ry='3.8'/></g></svg>");
   }
 
-  section{ padding:96px 0; }
-  .section-head{ margin-bottom:52px; max-width:640px; }
+  section{ padding:100px 0; }
+  .section-head{ margin-bottom:56px; max-width:640px; }
   .eyebrow{
-    font-size:12.5px; letter-spacing:0.16em; text-transform:uppercase;
-    color:var(--accent); font-weight:600; margin-bottom:14px; display:block;
+    font-size:11.5px; letter-spacing:0.22em; text-transform:uppercase;
+    color:var(--accent); font-weight:600; margin-bottom:16px; display:block;
   }
-  .section-head h2{ font-size:clamp(1.9rem, 3.4vw, 2.7rem); }
-  .section-head p{ color:var(--muted); margin-top:16px; font-size:16px; max-width:52ch; }
+  .section-head h2{ font-size:clamp(1.8rem, 3.2vw, 2.6rem); }
+  .section-head p{ color:var(--muted); margin-top:16px; font-size:15.5px; max-width:52ch; }
 
-  /* ---------- STATEMENT STRIP ---------- */
+  /* ---------- STATEMENT ---------- */
   .philosophy{
     background:var(--accent-deep); color:var(--paper);
-    padding:76px 0; text-align:center;
+    padding:88px 0; text-align:center;
   }
   .philosophy p{
     font-family:'Montserrat', sans-serif; font-weight:500;
-    font-size:clamp(1.3rem, 2.9vw, 1.95rem); line-height:1.5;
-    max-width:850px; margin:0 auto; color:#FFFFF8;
+    font-size:clamp(1.2rem, 2.5vw, 1.7rem); line-height:1.6;
+    max-width:820px; margin:0 auto; color:#FFFFF8;
   }
 
-  /* ---------- GALLERY ---------- */
-  .gallery-grid{ display:grid; grid-template-columns:repeat(2, 1fr); gap:48px 32px; }
-  @media (max-width:760px){ .gallery-grid{ grid-template-columns:1fr; gap:40px; } }
+  /* ---------- GALLERY (natural image ratios, editorial cards) ---------- */
+  .gallery-grid{ display:grid; grid-template-columns:repeat(2, 1fr); gap:72px 44px; align-items:start; }
+  @media (max-width:760px){ .gallery-grid{ grid-template-columns:1fr; gap:56px; } }
   .painting-card{ display:block; text-decoration:none; color:inherit; cursor:pointer; border:none; background:none; padding:0; text-align:left; font:inherit; width:100%; }
   .painting-frame{
-    position:relative; overflow:hidden; background:var(--paper-deep); aspect-ratio:4/3;
+    position:relative; overflow:hidden; background:var(--paper-deep);
   }
   .painting-frame img{
-    width:100%; height:100%; object-fit:cover;
-    transition:transform .6s cubic-bezier(.2,.7,.3,1);
+    width:100%; height:auto;         /* natural ratio — no cropping */
+    transition:transform .7s cubic-bezier(.2,.7,.3,1);
   }
-  .painting-card:hover .painting-frame img{ transform:scale(1.03); }
+  .painting-card:hover .painting-frame img{ transform:scale(1.02); }
   .status-tag{
-    position:absolute; top:14px; left:14px; z-index:2;
-    background:rgba(250,246,238,0.94); color:var(--accent-deep);
-    font-size:11px; letter-spacing:0.09em; text-transform:uppercase;
-    padding:6px 11px; font-weight:600;
+    position:absolute; top:16px; left:16px; z-index:2;
+    background:rgba(255,255,248,0.94); color:var(--ink);
+    font-size:10.5px; letter-spacing:0.14em; text-transform:uppercase;
+    padding:7px 12px; font-weight:600;
   }
   .status-tag.available{ background:var(--accent-deep); color:var(--paper); }
-  .painting-meta{ padding-top:18px; display:flex; justify-content:space-between; align-items:baseline; gap:12px; }
-  .painting-meta h3{ font-size:1.3rem; font-weight:500; }
-  .painting-meta .dims{ color:var(--muted); font-size:13.5px; margin-top:5px; }
-  .painting-price{ font-size:14.5px; font-weight:500; color:var(--accent-deep); white-space:nowrap; }
-  .painting-desc{ color:var(--muted); font-size:14.5px; margin-top:10px; max-width:58ch; }
+  .painting-meta{ padding-top:22px; display:flex; justify-content:space-between; align-items:baseline; gap:12px; border-top:1px solid var(--line); margin-top:22px; }
+  .painting-meta h3{ font-size:1.25rem; font-weight:600; letter-spacing:0.02em; }
+  .painting-meta .dims{ color:var(--muted); font-size:13px; margin-top:6px; letter-spacing:0.02em; }
+  .painting-price{ font-family:'Montserrat',sans-serif; font-size:15px; font-weight:600; color:var(--accent-deep); white-space:nowrap; }
+  .painting-desc{ color:var(--muted); font-size:14.5px; margin-top:12px; max-width:60ch; }
   .painting-feeling{
-    font-family:'Montserrat', sans-serif; font-style:italic; color:var(--accent);
-    font-size:15px; margin-top:8px;
+    font-family:'Work Sans', sans-serif; font-style:italic; color:var(--accent);
+    font-size:14.5px; margin-top:10px;
   }
-  .painting-swatches{ display:flex; gap:6px; margin-top:14px; }
+  .painting-swatches{ display:flex; gap:7px; margin-top:16px; }
   .painting-swatches span{
-    width:16px; height:16px; border-radius:50%; display:block;
-    border:1px solid rgba(0,0,0,0.1);
+    width:15px; height:15px; border-radius:50%; display:block;
+    border:1px solid rgba(11,49,66,0.12);
   }
   .view-hint{
-    font-size:12px; letter-spacing:0.08em; text-transform:uppercase;
-    color:var(--accent); margin-top:12px; font-weight:600; opacity:0; transition:opacity .25s ease;
+    font-size:11px; letter-spacing:0.14em; text-transform:uppercase;
+    color:var(--accent); margin-top:14px; font-weight:600; opacity:0; transition:opacity .25s ease;
+    display:inline-block;
   }
   .painting-card:hover .view-hint{ opacity:1; }
-
-  /* ---------- SPOTLIGHT (available piece) ---------- */
-  .spotlight{
-    display:grid; grid-template-columns:1.05fr 0.95fr; gap:56px; align-items:center;
-  }
-  @media (max-width:860px){ .spotlight{ grid-template-columns:1fr; gap:36px; } }
-  .spotlight-img{ position:relative; }
-  .spotlight-img img{ width:100%; }
-  .spotlight-body .desc{ color:var(--muted); margin-top:18px; max-width:52ch; }
-  .spotlight-facts{
-    margin-top:26px; display:grid; gap:10px; font-size:14.5px; color:var(--ink);
-  }
-  .spotlight-facts b{ font-weight:600; }
-  .spotlight-price{
-    font-family:'Montserrat', sans-serif; font-weight:600; font-size:1.7rem; margin-top:26px; color:var(--accent-deep);
-  }
-  .spotlight .btn{ margin-top:28px; }
+  @media (hover:none){ .view-hint{ opacity:0.85; } }
 
   /* ---------- UPCOMING ---------- */
   .upcoming{ background:var(--paper-deep); }
   .upcoming-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:32px; }
   @media (max-width:760px){ .upcoming-grid{ grid-template-columns:1fr; } }
   .upcoming-card{
-    background:var(--paper); padding:34px 32px; border:1px solid var(--line);
+    background:var(--paper); padding:38px 36px; border:1px solid var(--line);
   }
-  .upcoming-card h3{ font-size:1.35rem; margin-top:8px; }
+  .upcoming-card h3{ font-size:1.25rem; margin-top:10px; }
   .upcoming-card p{ color:var(--muted); font-size:14.5px; margin-top:12px; }
-  .upcoming-card .swatches{ display:flex; gap:6px; margin-top:18px; }
+  .upcoming-card .swatches{ display:flex; gap:7px; margin-top:20px; }
   .upcoming-card .swatches span{
-    width:16px; height:16px; border-radius:50%; border:1px solid rgba(0,0,0,0.1);
+    width:15px; height:15px; border-radius:50%; border:1px solid rgba(11,49,66,0.12);
   }
-
-  /* ---------- ABOUT ---------- */
-  .about-grid{ display:grid; grid-template-columns:0.9fr 1.1fr; gap:64px; align-items:center; }
-  @media (max-width:860px){ .about-grid{ grid-template-columns:1fr; gap:36px; } }
-  .about-photo{ position:relative; overflow:hidden; aspect-ratio:4/5; border-radius:50%; max-width:440px; margin:0 auto; }
-  .about-photo img{
-    width:100%; height:100%; object-fit:cover;
-    object-position:50% 32%; transform:scale(1.12);  /* slight crop-in as requested */
-  }
-  .about-body p{ color:var(--muted); margin-top:16px; max-width:56ch; }
 
   /* ---------- EARLY ACCESS ---------- */
   .early{ background:var(--accent-deep); color:var(--paper); text-align:center; }
   .early .eyebrow{ color:#CFDBD5; }
-  .early h2{ color:var(--paper); font-size:clamp(1.8rem,3.2vw,2.5rem); }
+  .early h2{ color:var(--paper); font-size:clamp(1.7rem,3vw,2.4rem); }
   .early p{ color:rgba(255,255,248,0.78); max-width:46ch; margin:16px auto 0; }
   .early form{
-    margin-top:32px; display:flex; gap:10px; justify-content:center; flex-wrap:wrap;
+    margin-top:34px; display:flex; gap:10px; justify-content:center; flex-wrap:wrap;
   }
   .early input[type=email]{
-    padding:14px 16px; font-size:15px; font-family:'Work Sans',sans-serif;
+    padding:15px 17px; font-size:15px; font-family:'Work Sans',sans-serif;
     border:1px solid rgba(255,255,248,0.4); background:rgba(255,255,248,0.08);
     color:var(--paper); border-radius:var(--radius); width:min(320px, 80vw);
   }
@@ -256,23 +233,36 @@
   .early .btn:hover{ background:#fff; }
   .early .note{ font-size:12.5px; margin-top:14px; color:rgba(255,255,248,0.6); }
 
+  /* ---------- ABOUT ---------- */
+  .about-grid{ display:grid; grid-template-columns:0.9fr 1.1fr; gap:72px; align-items:center; }
+  @media (max-width:860px){ .about-grid{ grid-template-columns:1fr; gap:40px; } }
+  .about-photo{
+    position:relative; overflow:hidden; aspect-ratio:4/5;
+    border-radius:50%; max-width:420px; margin:0 auto;
+  }
+  .about-photo img{
+    width:100%; height:100%; object-fit:cover;
+    object-position:50% 32%; transform:scale(1.12);
+  }
+  .about-body p{ color:var(--muted); margin-top:16px; max-width:56ch; font-size:15.5px; }
+
   /* ---------- CONTACT ---------- */
-  .contact-wrap{ display:grid; grid-template-columns:1fr 1fr; gap:64px; }
-  @media (max-width:860px){ .contact-wrap{ grid-template-columns:1fr; gap:40px; } }
+  .contact-wrap{ display:grid; grid-template-columns:1fr 1fr; gap:72px; }
+  @media (max-width:860px){ .contact-wrap{ grid-template-columns:1fr; gap:44px; } }
   .contact-info p{ color:var(--muted); margin-top:16px; max-width:44ch; }
-  .contact-links{ margin-top:28px; display:grid; gap:12px; }
+  .contact-links{ margin-top:30px; display:grid; gap:14px; }
   .contact-links a{
     text-decoration:none; font-size:15px; color:var(--ink);
-    border-bottom:1px solid var(--line); padding-bottom:12px; transition:color .2s ease;
+    border-bottom:1px solid var(--line); padding-bottom:13px; transition:color .2s ease;
   }
-  .contact-links a:hover{ color:var(--accent-deep); }
+  .contact-links a:hover{ color:var(--accent); }
   .field{ margin-bottom:18px; }
   .field label{
-    display:block; font-size:12.5px; letter-spacing:0.08em; text-transform:uppercase;
+    display:block; font-size:11.5px; letter-spacing:0.14em; text-transform:uppercase;
     font-weight:600; color:var(--accent-deep); margin-bottom:8px;
   }
   .field input, .field textarea{
-    width:100%; padding:13px 14px; font-size:15px; font-family:'Work Sans',sans-serif;
+    width:100%; padding:14px 15px; font-size:15px; font-family:'Work Sans',sans-serif;
     border:1px solid var(--line); background:#fff; color:var(--ink);
     border-radius:var(--radius);
   }
@@ -280,24 +270,24 @@
   .field textarea{ min-height:140px; resize:vertical; }
 
   /* ---------- FOOTER ---------- */
-  footer{ border-top:1px solid var(--line); padding:48px 0 36px; }
+  footer{ border-top:1px solid var(--line); padding:52px 0 40px; }
   .footer-inner{ display:flex; justify-content:space-between; align-items:center; gap:20px; flex-wrap:wrap; }
   .logo-mark{ height:96px; width:auto; color:var(--ink); }
-  .foot-links{ display:flex; gap:26px; flex-wrap:wrap; }
+  .foot-links{ display:flex; gap:28px; flex-wrap:wrap; }
   .foot-links a{
-    text-decoration:none; font-size:13px; letter-spacing:0.06em;
-    text-transform:uppercase; opacity:0.7;
+    text-decoration:none; font-size:12px; letter-spacing:0.12em;
+    text-transform:uppercase; opacity:0.7; font-weight:500;
   }
   .foot-links a:hover{ opacity:1; }
   .foot-bottom{
-    margin-top:30px; display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap;
+    margin-top:32px; display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap;
     font-size:12.5px; color:var(--muted);
   }
 
-  /* ---------- LIGHTBOX (swipeable detail viewer) ---------- */
+  /* ---------- LIGHTBOX (swipe fixed: overlay no longer blocks touch/clicks) ---------- */
   .lightbox{
     position:fixed; inset:0; z-index:100; display:none;
-    background:rgba(11,49,66,0.96); color:var(--paper);
+    background:rgba(11,49,66,0.97); color:var(--paper);
     flex-direction:column;
   }
   .lightbox.open{ display:flex; }
@@ -305,9 +295,9 @@
     display:flex; justify-content:space-between; align-items:center;
     padding:16px 20px;
   }
-  .lb-title{ font-family:'Montserrat',sans-serif; font-weight:600; font-size:1.05rem; letter-spacing:0.02em; }
+  .lb-title{ font-family:'Montserrat',sans-serif; font-weight:600; font-size:1.02rem; letter-spacing:0.04em; }
   .lb-close{
-    background:none; border:none; color:var(--paper); font-size:26px;
+    background:none; border:none; color:var(--paper); font-size:28px;
     cursor:pointer; padding:6px 10px; line-height:1;
   }
   .lb-stage{
@@ -316,15 +306,15 @@
   }
   .lb-stage img{
     max-width:92vw; max-height:74vh; object-fit:contain;
-    user-select:none; -webkit-user-drag:none;
+    user-select:none; -webkit-user-drag:none; pointer-events:none;
   }
   .lb-arrow{
     position:absolute; top:50%; transform:translateY(-50%); z-index:3;
     background:rgba(255,255,248,0.14); border:none; color:var(--paper);
-    font-size:22px; width:44px; height:44px; border-radius:50%;
+    font-size:22px; width:46px; height:46px; border-radius:50%;
     cursor:pointer; transition:background .2s ease;
   }
-  .lb-arrow:hover{ background:rgba(255,255,248,0.28); }
+  .lb-arrow:hover{ background:rgba(255,255,248,0.3); }
   .lb-prev{ left:14px; } .lb-next{ right:14px; }
   .lb-dots{ display:flex; gap:8px; justify-content:center; padding:16px 0 8px; }
   .lb-dots span{
@@ -332,10 +322,8 @@
     transition:background .2s ease;
   }
   .lb-dots span.on{ background:var(--paper); }
-  .lb-caption{ text-align:center; font-size:13px; color:rgba(255,255,248,0.7); padding-bottom:18px; }
-  @media (max-width:760px){
-    .lb-arrow{ display:none; } /* swipe on touch */
-  }
+  .lb-caption{ text-align:center; font-size:12.5px; color:rgba(255,255,248,0.7); padding-bottom:18px; }
+  @media (max-width:760px){ .lb-arrow{ display:none; } }
 </style>
 </head>
 <body>
@@ -350,10 +338,9 @@
     </button>
     <nav class="links" id="navLinks">
       <a href="#gallery">Collection</a>
-      <a href="#available">Available</a>
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
-      <a href="https://instagram.com/abbyrose_studio" target="_blank" rel="noopener" data-txt="instagramHandle">Instagram</a>
+      <a href="https://instagram.com/abbyrose_studio" target="_blank" rel="noopener">Instagram</a>
     </nav>
   </div>
 </header>
@@ -363,33 +350,28 @@
     <img src="assets/hero-abby.jpg" alt="Abby holding her painting Twilight Bloom" id="heroImg">
   </div>
   <div class="hero-text">
-    <span class="hero-eyebrow" data-txt="heroEyebrow">Original Australian botanical paintings</span>
-    <h1 data-txt="heroHeading">Inspired by Australia's Native Landscape</h1>
-    <p class="hero-sub" data-txt="heroSub">Hand-painted originals inspired by Australian native flora, created one canvas at a time on the Redcliffe Peninsula. Each piece is painted to hold a feeling, using layered colour and tonal depth to bring warmth, softness and a quiet connection to nature.</p>
-    <div class="hero-ctas">
-      <a href="#available" class="btn" data-goatcounter-click="hero:view-available">View available work</a>
-      <a href="#gallery" class="btn ghost" data-goatcounter-click="hero:view-collection">The collection</a>
+    <span class="hero-eyebrow reveal" data-txt="heroEyebrow">Original Australian botanical paintings</span>
+    <h1 class="reveal d1" data-txt="heroHeading">Inspired by Australia's Native Landscape</h1>
+    <div class="hero-rule reveal d1"></div>
+    <p class="hero-sub reveal d2" data-txt="heroSub">Hand-painted originals inspired by Australian native flora, created one canvas at a time on the Redcliffe Peninsula. Each piece is painted to hold a feeling, using layered colour and tonal depth to bring warmth, softness and a quiet connection to nature.</p>
+    <div class="hero-ctas reveal d3">
+      <a href="#gallery" class="btn" data-goatcounter-click="hero:view-collection">View the collection</a>
+      <a href="#about" class="btn ghost">About the artist</a>
     </div>
   </div>
 </section>
 
 <div class="stipple-divider"></div>
 
-<section class="philosophy" style="padding:76px 0;">
+<section class="philosophy" style="padding:88px 0;">
   <div class="wrap">
-    <p data-txt="statement">Inspired by Australia's native flora, I paint atmospheric botanical artworks using layered colour and translucent depth. Each original is created to capture a feeling rather than a perfect representation of nature.</p>
+    <p class="reveal" data-txt="statement">Inspired by Australia's native flora, I paint atmospheric botanical artworks using layered colour and translucent depth. Each original is created to capture a feeling rather than a perfect representation of nature.</p>
   </div>
 </section>
 
-<section id="available">
+<section id="gallery">
   <div class="wrap">
-    <div id="spotlightWrap"></div>
-  </div>
-</section>
-
-<section id="gallery" style="padding-top:0;">
-  <div class="wrap">
-    <div class="section-head">
+    <div class="section-head reveal">
       <span class="eyebrow" data-txt="galleryEyebrow">The Collection</span>
       <h2 data-txt="galleryHeading">Original works</h2>
       <p data-txt="galleryIntro">Each painting is a one-off original. Tap any piece to see it up close.</p>
@@ -398,9 +380,9 @@
   </div>
 </section>
 
-<section class="upcoming">
+<section class="upcoming" id="upcomingSection">
   <div class="wrap">
-    <div class="section-head">
+    <div class="section-head reveal">
       <span class="eyebrow" data-txt="upcomingEyebrow">In the Studio</span>
       <h2 data-txt="upcomingHeading">Coming next</h2>
       <p data-txt="upcomingIntro">Pieces currently on the easel. Join the early access list to see them before they're listed.</p>
@@ -411,33 +393,33 @@
 
 <section class="early">
   <div class="wrap">
-    <span class="eyebrow" data-txt="earlyAccessEyebrow">Early Access</span>
-    <h2 data-txt="earlyAccessHeading">See new work first</h2>
-    <p data-txt="earlyAccessBody">New paintings go to this list before they're listed anywhere else, with first pick before a piece goes public.</p>
-    <!-- Buttondown: replace YOUR-USERNAME (two places) once you create your free account -->
+    <span class="eyebrow reveal" data-txt="earlyAccessEyebrow">Early Access</span>
+    <h2 class="reveal d1" data-txt="earlyAccessHeading">See new work first</h2>
+    <p class="reveal d2" data-txt="earlyAccessBody">New paintings go to this list before they're listed anywhere else, with first pick before a piece goes public.</p>
+    <!-- Buttondown: if you've set your username, replace YOUR-USERNAME (two places) -->
     <form action="https://buttondown.email/api/emails/embed-subscribe/YOUR-USERNAME" method="post" target="popupwindow"
       onsubmit="window.open('https://buttondown.email/YOUR-USERNAME','popupwindow')"
-      data-goatcounter-click="early-access:subscribe">
+      data-goatcounter-click="early-access:subscribe" class="reveal d2">
       <input type="email" name="email" placeholder="you@example.com" required aria-label="Email address">
       <button type="submit" class="btn" data-txt="earlyAccessButton">Join the list</button>
     </form>
-    <p class="note" data-txt="earlyAccessNote">No spam. Just new work and the occasional studio note.</p>
+    <p class="note reveal d3" data-txt="earlyAccessNote">No spam. Just new work and the occasional studio note.</p>
   </div>
 </section>
 
 <section id="about">
   <div class="wrap">
     <div class="about-grid">
-      <div class="about-photo protected">
+      <div class="about-photo protected reveal">
         <img src="assets/profile.jpg" alt="Abby, the artist behind Abby Rose Studio">
       </div>
       <div class="about-body">
-        <span class="eyebrow" data-txt="aboutEyebrow">About</span>
-        <h2 data-txt="aboutHeading">Hi, I'm Abby</h2>
-        <p data-txt="aboutBody">I'm a graphic designer by trade and a painter by passion, creating contemporary Australian botanical artworks from the Redcliffe Peninsula in Queensland.</p>
-        <p data-txt="aboutBody2">Painting has always been my dream, but for now you'll usually find me at the easel on weekends, slowly building each original one layer at a time. Every background is created through multiple layers of colour and glazing, giving each piece its soft, atmospheric depth. I then bring Australia's native flora to life with delicate contour lines, textured details and subtle tonal highlights, creating botanicals that feel both contemporary and timeless.</p>
-        <p data-txt="aboutBody3">Each painting is an original, inspired by the quiet beauty of Australia's landscape and designed to bring warmth, softness and a sense of calm into your home.</p>
-        <p data-txt="aboutBody4">Every original comes with a signed Certificate of Authenticity.</p>
+        <span class="eyebrow reveal" data-txt="aboutEyebrow">About</span>
+        <h2 class="reveal d1" data-txt="aboutHeading">Hi, I'm Abby</h2>
+        <p class="reveal d2" data-txt="aboutBody">I'm a graphic designer by trade and a painter by passion, creating contemporary Australian botanical artworks from the Redcliffe Peninsula in Queensland.</p>
+        <p class="reveal d2" data-txt="aboutBody2">Painting has always been my dream, but for now you'll usually find me at the easel on weekends, slowly building each original one layer at a time. Every background is created through multiple layers of colour and glazing, giving each piece its soft, atmospheric depth. I then bring Australia's native flora to life with delicate contour lines, textured details and subtle tonal highlights, creating botanicals that feel both contemporary and timeless.</p>
+        <p class="reveal d3" data-txt="aboutBody3">Each painting is an original, inspired by the quiet beauty of Australia's landscape and designed to bring warmth, softness and a sense of calm into your home.</p>
+        <p class="reveal d3" data-txt="aboutBody4">Every original comes with a signed Certificate of Authenticity.</p>
       </div>
     </div>
   </div>
@@ -446,7 +428,7 @@
 <section id="contact">
   <div class="wrap">
     <div class="contact-wrap">
-      <div class="contact-info">
+      <div class="contact-info reveal">
         <span class="eyebrow" data-txt="contactEyebrow">Get in Touch</span>
         <h2 data-txt="contactHeading">Let's talk about a piece</h2>
         <p data-txt="contactBody">Whether you're asking about an available painting, thinking about a commission, or just want to see what's coming next — I'd love to hear from you.</p>
@@ -456,10 +438,7 @@
           <a href="#" style="pointer-events:none" id="deliveryNote">Redcliffe Peninsula, QLD — local delivery available</a>
         </div>
       </div>
-      <!-- Formspree: replace YOUR_FORM_ID once you create your free form.
-           Emails arrive at whatever address your Formspree account uses —
-           to redirect later, just change the email in Formspree settings, not here. -->
-      <form class="contact-form" action="https://formspree.io/f/xwvgwkkr" method="POST">
+      <form class="contact-form reveal d1" action="https://formspree.io/f/xwvgwkkr" method="POST">
         <input type="hidden" name="_next" value="https://abbyrosestudio.com.au/thanks.html">
         <div class="field">
           <label for="name">Name</label>
@@ -471,7 +450,7 @@
         </div>
         <div class="field">
           <label for="piece">Which piece? (optional)</label>
-          <input type="text" id="piece" name="piece" placeholder="e.g. Twilight Bloom">
+          <input type="text" id="piece" name="piece" placeholder="e.g. Flora Haze">
         </div>
         <div class="field">
           <label for="message">Message</label>
@@ -507,7 +486,7 @@
     <span class="lb-title" id="lbTitle"></span>
     <button class="lb-close" id="lbClose" aria-label="Close">&times;</button>
   </div>
-  <div class="lb-stage protected" id="lbStage">
+  <div class="lb-stage" id="lbStage">
     <button class="lb-arrow lb-prev" id="lbPrev" aria-label="Previous photo">&#8249;</button>
     <img src="" alt="" id="lbImg">
     <button class="lb-arrow lb-next" id="lbNext" aria-label="Next photo">&#8250;</button>
@@ -517,13 +496,9 @@
 </div>
 
 <script>
-  // ---------- image protection (deterrent, not absolute) ----------
-  document.addEventListener('contextmenu', e => {
-    if (e.target.tagName === 'IMG') e.preventDefault();
-  });
-  document.addEventListener('dragstart', e => {
-    if (e.target.tagName === 'IMG') e.preventDefault();
-  });
+  // ---------- image protection (deterrent only; screenshots cannot be blocked) ----------
+  document.addEventListener('contextmenu', e => { if (e.target.tagName === 'IMG') e.preventDefault(); });
+  document.addEventListener('dragstart', e => { if (e.target.tagName === 'IMG') e.preventDefault(); });
 
   document.getElementById('year').textContent = new Date().getFullYear();
 
@@ -536,23 +511,25 @@
     toggle.setAttribute('aria-expanded', open);
   });
   links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-    links.classList.remove('open');
-    toggle.setAttribute('aria-expanded','false');
+    links.classList.remove('open'); toggle.setAttribute('aria-expanded','false');
   }));
+
+  // ---------- scroll reveal ----------
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(en => { if (en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
+  }, { threshold: 0.12 });
+  function observeReveals(root=document){ root.querySelectorAll('.reveal:not(.in)').forEach(el => io.observe(el)); }
+  observeReveals();
 
   // ---------- GoatCounter click events ----------
   document.addEventListener('click', (e) => {
     const el = e.target.closest('[data-goatcounter-click]');
     if (el && window.goatcounter && window.goatcounter.count) {
-      window.goatcounter.count({
-        path: el.getAttribute('data-goatcounter-click'),
-        title: el.getAttribute('data-goatcounter-click'),
-        event: true
-      });
+      window.goatcounter.count({ path: el.getAttribute('data-goatcounter-click'), title: el.getAttribute('data-goatcounter-click'), event: true });
     }
   });
 
-  // ---------- editable site text from data/content.json ----------
+  // ---------- editable site text ----------
   fetch('data/content.json')
     .then(r => r.json())
     .then(c => {
@@ -567,14 +544,15 @@
       if (c.contactEmail){ em.href = 'mailto:' + c.contactEmail; em.textContent = c.contactEmail; }
       if (c.contactDeliveryNote){ document.getElementById('deliveryNote').textContent = c.location + ' — ' + c.contactDeliveryNote; }
     })
-    .catch(()=>{ /* fall back to text baked into the HTML */ });
+    .catch(()=>{});
 
-  // ---------- paintings ----------
+  // ---------- lightbox (pointer-based: works with mouse AND touch) ----------
   let LB = { photos:[], idx:0 };
   const lightbox = document.getElementById('lightbox');
   const lbImg = document.getElementById('lbImg');
   const lbTitle = document.getElementById('lbTitle');
   const lbDots = document.getElementById('lbDots');
+  const lbStage = document.getElementById('lbStage');
 
   function openLightbox(title, photos, start=0){
     LB.photos = photos; LB.idx = start;
@@ -598,8 +576,8 @@
     lbImg.src='';
   }
   document.getElementById('lbClose').addEventListener('click', closeLB);
-  document.getElementById('lbPrev').addEventListener('click', ()=>showLB(LB.idx-1));
-  document.getElementById('lbNext').addEventListener('click', ()=>showLB(LB.idx+1));
+  document.getElementById('lbPrev').addEventListener('click', e=>{ e.stopPropagation(); showLB(LB.idx-1); });
+  document.getElementById('lbNext').addEventListener('click', e=>{ e.stopPropagation(); showLB(LB.idx+1); });
   lightbox.addEventListener('click', e=>{ if(e.target===lightbox) closeLB(); });
   document.addEventListener('keydown', e=>{
     if(!lightbox.classList.contains('open')) return;
@@ -607,35 +585,43 @@
     if(e.key==='ArrowLeft') showLB(LB.idx-1);
     if(e.key==='ArrowRight') showLB(LB.idx+1);
   });
-  // touch swipe
-  let touchX=null;
-  document.getElementById('lbStage').addEventListener('touchstart', e=>{ touchX=e.touches[0].clientX; },{passive:true});
-  document.getElementById('lbStage').addEventListener('touchend', e=>{
-    if(touchX===null) return;
-    const dx = e.changedTouches[0].clientX - touchX;
-    if(Math.abs(dx)>48){ dx>0 ? showLB(LB.idx-1) : showLB(LB.idx+1); }
-    touchX=null;
-  },{passive:true});
+  // pointer swipe — reliable on iPhone, iPad, Android and desktop drag
+  let px=null;
+  lbStage.addEventListener('pointerdown', e=>{ if(e.target.closest('.lb-arrow')) return; px=e.clientX; });
+  lbStage.addEventListener('pointerup', e=>{
+    if(px===null) return;
+    const dx = e.clientX - px;
+    if(Math.abs(dx)>44){ dx>0 ? showLB(LB.idx-1) : showLB(LB.idx+1); }
+    px=null;
+  });
+  lbStage.addEventListener('pointercancel', ()=>{ px=null; });
 
+  // ---------- paintings: auto-sorted, no duplicate spotlight ----------
   fetch('data/paintings.json')
     .then(res => res.json())
     .then(data => {
       const paintings = data.paintings || data;
       const grid = document.getElementById('galleryGrid');
-      const spotlightWrap = document.getElementById('spotlightWrap');
       const upcomingGrid = document.getElementById('upcomingGrid');
-      let spotlightDone = false;
 
-      paintings.filter(p => p.status !== 'coming-soon').forEach(p => {
+      const rank = s => s === 'available' ? 0 : 1;   // available always first
+      const dateOf = p => p.dateAdded || '1970-01-01';
+
+      const galleryPieces = paintings
+        .filter(p => p.status !== 'coming-soon')
+        .sort((a,b) => rank(a.status) - rank(b.status) || dateOf(b).localeCompare(dateOf(a)));
+
+      galleryPieces.forEach((p, n) => {
         const isAvailable = p.status === 'available';
         const tagLabel = isAvailable ? 'Available now' : 'Collected';
         const tagClass = isAvailable ? 'status-tag available' : 'status-tag';
         const allPhotos = [p.image, ...(p.detailImages||[])].filter(Boolean);
         const swatchesHtml = (p.palette||[]).length
           ? `<div class="painting-swatches">${p.palette.map(c=>`<span style="background:${c}"></span>`).join('')}</div>` : '';
+        const facts = [p.size, p.medium, p.frame].filter(Boolean).join(' · ');
 
         const card = document.createElement('button');
-        card.className = 'painting-card';
+        card.className = 'painting-card reveal' + (n%2 ? ' d1' : '');
         card.setAttribute('data-goatcounter-click', `gallery-card:${p.title}`);
         card.innerHTML = `
           <div class="painting-frame protected">
@@ -645,9 +631,9 @@
           <div class="painting-meta">
             <div>
               <h3>${p.title}</h3>
-              <div class="dims">${[p.size, p.medium].filter(Boolean).join(' · ')}</div>
+              <div class="dims">${facts}</div>
             </div>
-            ${p.price ? `<div class="painting-price">${p.price}</div>` : ''}
+            ${isAvailable && p.price ? `<div class="painting-price">${p.price}</div>` : ''}
           </div>
           ${p.description ? `<p class="painting-desc">${p.description}</p>` : ''}
           ${p.feeling ? `<p class="painting-feeling">${p.feeling}</p>` : ''}
@@ -656,53 +642,24 @@
         `;
         card.addEventListener('click', ()=>openLightbox(p.title, allPhotos));
         grid.appendChild(card);
-
-        if (isAvailable && !spotlightDone) {
-          spotlightDone = true;
-          const facts = [];
-          if (p.size) facts.push(`<div><b>Size</b> — ${p.size}</div>`);
-          if (p.medium) facts.push(`<div><b>Medium</b> — ${p.medium}</div>`);
-          if (p.frame) facts.push(`<div><b>Frame</b> — ${p.frame}</div>`);
-          if (p.finish) facts.push(`<div><b>Finish</b> — ${p.finish}</div>`);
-          if (p.delivery) facts.push(`<div><b>Delivery</b> — ${p.delivery}</div>`);
-          const spotSw = (p.palette||[]).length
-            ? `<div class="painting-swatches" style="margin-top:22px;">${p.palette.map(c=>`<span style="background:${c}"></span>`).join('')}</div>` : '';
-          spotlightWrap.innerHTML = `
-            <div class="spotlight">
-              <div class="spotlight-img protected" role="button" tabindex="0" aria-label="View ${p.title} up close" style="cursor:pointer;">
-                <img src="assets/${p.image}" alt="${p.title}, full view">
-              </div>
-              <div class="spotlight-body">
-                <span class="eyebrow">Available Now</span>
-                <h3 style="font-size:clamp(1.7rem,2.8vw,2.3rem);">${p.title}</h3>
-                ${p.description ? `<p class="desc">${p.description}</p>` : ''}
-                ${p.feeling ? `<p class="painting-feeling">${p.feeling}</p>` : ''}
-                <div class="spotlight-facts">${facts.join('')}</div>
-                ${p.price ? `<div class="spotlight-price">${p.price}</div>` : ''}
-                ${spotSw}
-                <a href="#contact" class="btn" data-goatcounter-click="enquire:${p.title}">Enquire about this piece</a>
-              </div>
-            </div>`;
-          const si = spotlightWrap.querySelector('.spotlight-img');
-          si.addEventListener('click', ()=>openLightbox(p.title, allPhotos));
-          si.addEventListener('keydown', e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); openLightbox(p.title, allPhotos);} });
-        }
       });
 
-      if (!spotlightDone) document.getElementById('available').style.display='none';
-
-      const upcoming = paintings.filter(p => p.status === 'coming-soon');
+      const upcoming = paintings
+        .filter(p => p.status === 'coming-soon')
+        .sort((a,b) => dateOf(b).localeCompare(dateOf(a)));
       if (upcoming.length) {
-        upcomingGrid.innerHTML = upcoming.map(p => `
-          <div class="upcoming-card">
+        upcomingGrid.innerHTML = upcoming.map((p,i) => `
+          <div class="upcoming-card reveal${i%2?' d1':''}">
             ${p.size ? `<span class="eyebrow">${p.size}</span>` : ''}
             <h3>${p.title}</h3>
             ${p.description ? `<p>${p.description}</p>` : ''}
             ${(p.palette||[]).length ? `<div class="swatches">${p.palette.map(c=>`<span style="background:${c}"></span>`).join('')}</div>` : ''}
           </div>`).join('');
       } else {
-        upcomingGrid.closest('section').style.display = 'none';
+        document.getElementById('upcomingSection').style.display = 'none';
       }
+
+      observeReveals();
     })
     .catch(err => {
       console.error('Could not load paintings.json', err);

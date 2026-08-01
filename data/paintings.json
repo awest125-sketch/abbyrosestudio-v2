@@ -23,7 +23,8 @@
         "#1e2f5c"
       ],
       "description": "As the light softens and the day begins to fade, Twilight Bloom captures the quiet beauty of Australia's native flora in the golden moments before dusk. Gentle layers of colour, atmospheric depth and delicate botanical forms create a sense of warmth and stillness, inviting the viewer to pause and reflect.",
-      "feeling": ""
+      "feeling": "",
+      "dateAdded": "2026-05-01"
     },
     {
       "title": "After Rain",
@@ -47,7 +48,8 @@
         "#c9bcd4"
       ],
       "description": "As the rain clears and the landscape begins to breathe again, After Rain captures the quiet renewal of Australia's native flora. Soft layers of colour, gentle movement and atmospheric depth evoke the freshness that lingers after a shower, inviting a sense of calm and reflection.",
-      "feeling": ""
+      "feeling": "",
+      "dateAdded": "2025-09-01"
     },
     {
       "title": "Golden Hour",
@@ -71,7 +73,8 @@
         "#f0e6d2"
       ],
       "description": "As the afternoon light turns warm and golden, Golden Hour celebrates Australia's native flora bathed in the final glow of the day. Layered colour, soft light and delicate botanical forms create a feeling of warmth and quiet beauty, capturing the fleeting magic of the landscape before sunset.",
-      "feeling": ""
+      "feeling": "",
+      "dateAdded": "2025-11-01"
     },
     {
       "title": "Whispering Natives",
@@ -94,7 +97,8 @@
         "#c9a08f"
       ],
       "description": "As a gentle breeze moves through the bush, Whispering Natives captures the quiet rhythm and understated beauty of Australia's native flora. Layered colour, soft texture and atmospheric depth create a sense of movement and stillness, inviting the viewer to slow down and connect with nature.",
-      "feeling": ""
+      "feeling": "",
+      "dateAdded": "2025-10-01"
     },
     {
       "title": "Golden Summer Fields",
@@ -112,7 +116,8 @@
         "#c99a68"
       ],
       "description": "Mossy greens and warm browns, built the same layered way as Twilight Bloom — dark to light, until it glows.",
-      "feeling": ""
+      "feeling": "",
+      "dateAdded": "2026-06-15"
     },
     {
       "title": "Flora Haze",
@@ -139,7 +144,8 @@
         "#9c4c3b"
       ],
       "description": "Flora Haze is inspired by Australia's native flora and the soft, muted colours of the landscape. Built through layered colour and tonal depth, delicate botanicals emerge from a gentle haze, creating a calm, atmospheric composition.",
-      "feeling": "The stillness of low light through leaves."
+      "feeling": "The stillness of low light through leaves.",
+      "dateAdded": "2026-07-25"
     }
   ]
 }
