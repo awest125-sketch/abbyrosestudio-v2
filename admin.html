@@ -591,8 +591,10 @@
   });
   document.getElementById('gcRefresh').addEventListener('click', ()=>{ if(GC_CODE) loadGC(GC_CODE); });
 
-  // auto-load if code was saved from a previous visit
-  if(GC_CODE) loadGC(GC_CODE);
+  // hardcoded — loads automatically every time
+  GC_CODE = 'abbyrosestudio';
+  document.getElementById('gcCode').value = GC_CODE;
+  loadGC(GC_CODE);
 </script>
 </body>
 </html>
