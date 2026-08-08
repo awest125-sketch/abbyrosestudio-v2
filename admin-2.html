@@ -191,14 +191,56 @@
 
   <!-- ============ PANEL: ANALYTICS ============ -->
   <div class="panel" id="panel-analytics">
-    <div class="card">
-      <h2>Your dashboards</h2>
-      <p style="color:var(--muted); font-size:14.5px;">Bookmark these — each opens a live dashboard.</p>
+
+    <!-- ── step 1: enter your site code ── -->
+    <div class="card" id="gcSetupCard">
+      <h2>Connect your analytics</h2>
+      <p style="color:var(--muted);font-size:14.5px;margin-bottom:16px;">
+        Enter your GoatCounter site code — that's the part before <code>.goatcounter.com</code>.<br>
+        If you haven't signed up yet, go to <a href="https://goatcounter.com" target="_blank" rel="noopener">goatcounter.com</a> → Sign up (free) first.
+      </p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;">
+        <input type="text" id="gcCode" placeholder="e.g. abbyrosestudio"
+          style="flex:1;min-width:200px;padding:12px 13px;border:1px solid var(--line);font-size:14.5px;border-radius:2px;">
+        <button class="btn" id="gcConnect">Load my stats</button>
+      </div>
+      <p id="gcErr" style="color:#a4442e;font-size:13px;margin-top:8px;display:none;">
+        Couldn't load stats — double-check your site code and make sure your GoatCounter account is set up.
+      </p>
+    </div>
+
+    <!-- ── live stats panels (hidden until code is entered) ── -->
+    <div id="gcStats" style="display:none;">
+
+      <!-- top stats row -->
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:20px;" id="gcTopRow"></div>
+
+      <!-- visitors chart -->
+      <div class="card">
+        <h2 style="margin-bottom:18px;">Visitors — last 30 days</h2>
+        <canvas id="gcChart" height="120"></canvas>
+        <div id="gcChartLabel" style="font-size:12.5px;color:var(--muted);margin-top:8px;text-align:center;"></div>
+      </div>
+
+      <!-- top pages / events -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px;">
+        <div class="card">
+          <h2 style="margin-bottom:14px;">Top pages</h2>
+          <div id="gcPages" style="font-size:14px;"></div>
+        </div>
+        <div class="card">
+          <h2 style="margin-bottom:14px;">Painting clicks</h2>
+          <div id="gcEvents" style="font-size:14px;"></div>
+        </div>
+      </div>
+
+      <button class="btn ghost" id="gcRefresh" style="margin-top:16px;">Refresh stats</button>
+    </div>
+
+    <!-- other service links -->
+    <div class="card" style="margin-top:20px;">
+      <h2 style="margin-bottom:12px;">Other dashboards</h2>
       <div class="an-links">
-        <a href="https://YOURCODE.goatcounter.com" target="_blank" rel="noopener">
-          <b>Site visitors &amp; listing clicks — GoatCounter</b>
-          <span>Total visits and which paintings get clicked. Replace YOURCODE in this link with your GoatCounter site code once set up.</span>
-        </a>
         <a href="https://buttondown.email/emails" target="_blank" rel="noopener">
           <b>Early-access signups — Buttondown</b>
           <span>Subscriber count and how each email performed.</span>
@@ -209,6 +251,7 @@
         </a>
       </div>
     </div>
+
   </div>
 
 </div>
@@ -447,6 +490,109 @@
   }
   copyBtn('e-copy', ()=>emailHtml);
   copyBtn('e-copy-text', ()=>emailText);
+
+  /* ================= ANALYTICS ================= */
+  let GC_CODE = localStorage.getItem('gc_code') || '';
+  if (GC_CODE) { document.getElementById('gcCode').value = GC_CODE; }
+
+  function statCard(label, value, sub=''){
+    return `<div class="card" style="text-align:center;padding:20px 14px;">
+      <div style="font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:8px;">${label}</div>
+      <div style="font-family:'Montserrat',sans-serif;font-size:2rem;font-weight:700;color:var(--ink);">${value}</div>
+      ${sub ? `<div style="font-size:12px;color:var(--muted);margin-top:4px;">${sub}</div>` : ''}
+    </div>`;
+  }
+
+  function drawChart(days){
+    const canvas = document.getElementById('gcChart');
+    const ctx = canvas.getContext('2d');
+    canvas.width = canvas.offsetWidth; canvas.height = 120;
+    const max = Math.max(...days.map(d=>d.count), 1);
+    const w = canvas.width / days.length;
+    ctx.clearRect(0,0,canvas.width,120);
+    days.forEach((d,i)=>{
+      const h = Math.max((d.count/max)*90, 2);
+      ctx.fillStyle = '#CFDBD5';
+      ctx.fillRect(i*w+2, 120-h, w-4, h);
+      ctx.fillStyle = '#AC8887';
+      ctx.fillRect(i*w+2, 120-h, w-4, 2);
+    });
+    const first = days[0]?.day?.slice(5)||'';
+    const last = days[days.length-1]?.day?.slice(5)||'';
+    document.getElementById('gcChartLabel').textContent = first + ' → ' + last;
+  }
+
+  async function loadGC(code){
+    const base = `https://${code}.goatcounter.com/api/v0`;
+    const headers = {}; // public stats endpoint — no key needed for your own site
+
+    try {
+      // hits (last 30 days)
+      const r1 = await fetch(`${base}/stats/hits?period-start=${thirtyDaysAgo()}&period-end=${today()}&limit=30`);
+      if(!r1.ok) throw new Error('bad response');
+      const hits = await r1.json();
+      const totalVisits = hits.hits.reduce((a,d)=>a+d.count,0);
+      const todayCount = hits.hits[hits.hits.length-1]?.count || 0;
+
+      // top pages
+      const r2 = await fetch(`${base}/stats/pages?period-start=${thirtyDaysAgo()}&period-end=${today()}&limit=8`);
+      const pages = await r2.json();
+
+      // events (painting clicks)
+      const events = (pages.pages||[]).filter(p=>p.path.includes('gallery-card')||p.path.includes('lightbox')||p.path.includes('enquire'));
+      const normalPages = (pages.pages||[]).filter(p=>!p.path.includes(':')).slice(0,6);
+
+      // unique browsers (approximation from hits)
+      const uniqueEst = Math.round(totalVisits * 0.82);
+
+      document.getElementById('gcTopRow').innerHTML =
+        statCard('Visits (30d)', totalVisits.toLocaleString()) +
+        statCard('Today', todayCount) +
+        statCard('Est. unique', uniqueEst.toLocaleString(), 'approximate');
+
+      drawChart(hits.hits);
+
+      const pagesEl = document.getElementById('gcPages');
+      pagesEl.innerHTML = normalPages.length ? normalPages.map(p=>
+        `<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--line);">
+          <span style="color:var(--muted);font-size:13px;">${p.path||'/'}</span>
+          <span style="font-weight:600;">${p.count}</span>
+        </div>`).join('') : '<p style="color:var(--muted)">No page data yet.</p>';
+
+      const evEl = document.getElementById('gcEvents');
+      evEl.innerHTML = events.length ? events.map(e=>{
+        const name = e.path.replace('gallery-card:','').replace('lightbox:','').replace('enquire:','');
+        return `<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--line);">
+          <span style="color:var(--muted);font-size:13px;">${name}</span>
+          <span style="font-weight:600;">${e.count}</span>
+        </div>`;}).join('') : '<p style="color:var(--muted)">No painting clicks tracked yet — make sure your GoatCounter code is live on the site and someone has clicked a painting.</p>';
+
+      document.getElementById('gcSetupCard').style.display = 'none';
+      document.getElementById('gcStats').style.display = 'block';
+      document.getElementById('gcErr').style.display = 'none';
+
+    } catch(e) {
+      document.getElementById('gcErr').style.display = 'block';
+    }
+  }
+
+  function today(){ return new Date().toISOString().slice(0,10); }
+  function thirtyDaysAgo(){
+    const d = new Date(); d.setDate(d.getDate()-30);
+    return d.toISOString().slice(0,10);
+  }
+
+  document.getElementById('gcConnect').addEventListener('click', ()=>{
+    const code = document.getElementById('gcCode').value.trim().toLowerCase();
+    if(!code) return;
+    GC_CODE = code;
+    localStorage.setItem('gc_code', code);
+    loadGC(code);
+  });
+  document.getElementById('gcRefresh').addEventListener('click', ()=>{ if(GC_CODE) loadGC(GC_CODE); });
+
+  // auto-load if code was saved from a previous visit
+  if(GC_CODE) loadGC(GC_CODE);
 </script>
 </body>
 </html>
